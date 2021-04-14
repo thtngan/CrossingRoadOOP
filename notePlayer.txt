@@ -1,0 +1,5 @@
+Player: can change face
+
+Object:
++ Animal: (bird: not moving; elephant: moving)
++ 
