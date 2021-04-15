@@ -46,7 +46,7 @@ CBird::CBird() {
 }
 
 CBird::~CBird() {
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < 4; i++)
 		delete _bird[i];
 
 	delete _bird;
