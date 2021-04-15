@@ -3,19 +3,19 @@
 #include "CObject.h"
 #include "CPos.h"
 
-class CBird : public CObject
+class CElephant : public CObject
 {
 private:
-	char** _bird;
+	char** _elephant;
+
 public:
-	CBird();
-	~CBird();
-	
+	CElephant();
+	~CElephant();
+
 	//return sth
 	char** kind();
 	int getW();
 	int getH();
-
 
 };
 

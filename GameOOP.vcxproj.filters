@@ -33,6 +33,9 @@
     <ClInclude Include="CMap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CElephant.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CPlayer.cpp">
@@ -48,6 +51,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CElephant.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
