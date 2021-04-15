@@ -18,9 +18,9 @@ void CPlayer::Draw(const int type) {
 	//Draw leg
 	for (int i = 0; i < 7; i++) {
 		if (i == 2)
-			_player[2][i] = '/';
+			_player[2][i] = '^';
 		else if (i == 4)
-			_player[2][i] = '\\';
+			_player[2][i] = '^';
 		else _player[2][i] = ' ';
 	}
 
