@@ -2,6 +2,9 @@
 #include "CPlayer.h"
 #include "CBird.h"
 #include "CElephant.h"
+#include "CHelicopter.h"
+#include "CTrain.h"
+#include "CCar.h"
 #include "CMap.h"
 
 int main() {
@@ -9,7 +12,7 @@ int main() {
 	//a.printBorders();
 	//a.printPlayer();
 
-	CElephant b;
+	CCar b;
 
 	return 0;
 }

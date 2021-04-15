@@ -20,19 +20,25 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CBird.h" />
+    <ClInclude Include="CCar.h" />
     <ClInclude Include="CElephant.h" />
+    <ClInclude Include="CHelicopter.h" />
     <ClInclude Include="CMap.h" />
     <ClInclude Include="CObject.h" />
     <ClInclude Include="CPlayer.h" />
     <ClInclude Include="CPos.h" />
+    <ClInclude Include="CTrain.h" />
     <ClInclude Include="Header.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CBird.cpp" />
+    <ClCompile Include="CCar.cpp" />
     <ClCompile Include="CElephant.cpp" />
+    <ClCompile Include="CHelicopter.cpp" />
     <ClCompile Include="CMap.cpp" />
     <ClCompile Include="CObject.cpp" />
     <ClCompile Include="CPlayer.cpp" />
+    <ClCompile Include="CTrain.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

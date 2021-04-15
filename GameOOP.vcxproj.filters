@@ -36,6 +36,15 @@
     <ClInclude Include="CElephant.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CHelicopter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CTrain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CCar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CPlayer.cpp">
@@ -54,6 +63,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CElephant.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CHelicopter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CTrain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CCar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
