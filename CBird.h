@@ -10,6 +10,11 @@ private:
 public:
 	CBird();
 	~CBird();
+	
+	//return sth
+	char** kind();
+	int getW();
+	int getH();
 
 
 };

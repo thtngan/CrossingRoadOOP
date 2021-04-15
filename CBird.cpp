@@ -38,11 +38,11 @@ CBird::CBird() {
 	_bird[3][3] = 'V';
 	_bird[3][4] = 'V';
 
-	for (int i = 0; i < 4; i++) {
-		for (int j = 0; j < 7; j++)
-			cout << _bird[i][j];
-		cout << endl;
-	}
+	//for (int i = 0; i < 4; i++) {
+	//	for (int j = 0; j < 7; j++)
+	//		cout << _bird[i][j];
+	//	cout << endl;
+	//}
 }
 
 CBird::~CBird() {
@@ -50,4 +50,15 @@ CBird::~CBird() {
 		delete _bird[i];
 
 	delete _bird;
+}
+
+char** CBird::kind() {
+	return _bird;
+}
+
+int CBird::getW() {
+	return 7;
+}
+int CBird::getH() {
+	return 4;
 }
