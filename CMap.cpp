@@ -14,6 +14,7 @@ CMap::CMap() {
 	}
 }
 
+
 void CMap::printBorders() {
 	system("cls");
 	gotoXY(0, 0);
@@ -26,6 +27,7 @@ void CMap::printBorders() {
 	}
 }
 
+
 void CMap::Print(CPos pos, char** kind, int h, int w) {
 	int X = pos.getX();
 	int Y = pos.getY();
@@ -37,12 +39,14 @@ void CMap::Print(CPos pos, char** kind, int h, int w) {
 	}
 }
 
+
+
 void CMap::printPlayer() {
 	//print player
 	Print(
 		_player.getPos(),
-		_player.kind(), 
-		_player.getH(), 
+		_player.kind(),
+		_player.getH(),
 		_player.getW()
 	);
 }

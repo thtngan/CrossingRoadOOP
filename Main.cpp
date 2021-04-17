@@ -6,13 +6,12 @@
 #include "CTrain.h"
 #include "CCar.h"
 #include "CMap.h"
+#include "CMenu.h"
 
 int main() {
-	CMap a;
-	//a.printBorders();
-	//a.printPlayer();
+	srand(time(NULL));
+	CMenu game;
+	game.menu();
 
-	CCar b;
-
-	return 0;
+	
 }
