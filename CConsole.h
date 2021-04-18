@@ -26,6 +26,7 @@
 #define BLINK 16
 
 void FixConsoleWindow();
+void ShowConsoleCursor(bool showFlag);
 
 class CConsole
 {
