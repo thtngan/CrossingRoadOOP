@@ -1,10 +1,12 @@
 #ifndef _button
 #define _button
 
-#include "Header.h"
+
 #define key_none -1
+#include <conio.h>
 
 int inputB();
+
 
 class CButton
 {
