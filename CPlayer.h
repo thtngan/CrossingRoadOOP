@@ -1,6 +1,6 @@
 #ifndef CPlayer_h
 #define CPlayer_h
-#include "Header.h"
+
 #include "CPos.h"
 
 class CPlayer

@@ -139,11 +139,11 @@ CTrain::CTrain() {
 	_train[3][41] = '0';
 
 
-	for (int i = 0; i < 4; i++) {
-		for (int j = 0; j < 45; j++)
-			cout << _train[i][j];
-		cout << endl;
-	}
+	//for (int i = 0; i < 4; i++) {
+	//	for (int j = 0; j < 45; j++)
+	//		cout << _train[i][j];
+	//	cout << endl;
+	//}
 }
 
 CTrain::~CTrain() {

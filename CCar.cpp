@@ -48,11 +48,11 @@ CCar::CCar() {
 	_car[3][11] = '-';
 	_car[3][12] = '\'';
 
-	for (int i = 0; i < 4; i++) {
-		for (int j = 0; j < 13; j++)
-			cout << _car[i][j];
-		cout << endl;
-	}
+	//for (int i = 0; i < 4; i++) {
+	//	for (int j = 0; j < 13; j++)
+	//		cout << _car[i][j];
+	//	cout << endl;
+	//}
 }
 
 CCar::~CCar() {

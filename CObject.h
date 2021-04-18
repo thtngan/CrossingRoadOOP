@@ -1,5 +1,6 @@
 #pragma once
 #include "CPos.h"
+#include "CConsole.h"
 
 class CObject
 {

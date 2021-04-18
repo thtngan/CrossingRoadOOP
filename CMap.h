@@ -1,6 +1,15 @@
 #pragma once
-#include "Header.h"
+#include <iostream>
+#include <cstdlib>
+#include <cstring>
+#include <string>
+#include <windows.h>
+#include <conio.h>
 #include "CPlayer.h"
+#include "CObject.h"
+
+
+using namespace std;
 
 class CMap
 {

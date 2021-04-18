@@ -1,4 +1,4 @@
-#include "Header.h"
+#pragma once
 #include "CObject.h"
 #include "CPos.h"
 
