@@ -23,9 +23,9 @@ public:
 	CMap();
 	~CMap() = default;
 	void printBorders();
-	void Print(CPos pos, char** kind, int h, int w); //height and width of thing to print
+	bool Print(CPos pos, char** kind, int h, int w); //height and width of thing to print
 	void printPlayer(); //draw player 
-	//void printObject(); //draw another object
+	void printObject(CObject *); //draw another object
 
 
 };
