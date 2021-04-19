@@ -1,6 +1,6 @@
 #include "CElephant.h"
 
-CElephant::CElephant() {
+CElephant::CElephant() : CObject(){
 	_elephant = new char* [4];
 	for (int i = 0; i < 4; i++)
 		_elephant[i] = new char[10];
