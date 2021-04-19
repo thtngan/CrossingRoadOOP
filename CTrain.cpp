@@ -1,6 +1,6 @@
 #include "CTrain.h"
 
-CTrain::CTrain() {
+CTrain::CTrain() : CObject(){
 	_train = new char* [4];
 	for (int i = 0; i < 4; i++)
 		_train[i] = new char[45];
