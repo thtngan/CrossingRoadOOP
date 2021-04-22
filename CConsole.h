@@ -7,6 +7,7 @@
 #include <time.h>
 
 #define gotoXY(x,y) printf("\033[%d;%dH", (y), (x))
+
 #define BLACK 0
 #define BLUE 1
 #define GREEN 2

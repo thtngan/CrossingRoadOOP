@@ -9,7 +9,6 @@
 
 using namespace std;
 
-#include "CButton.h"
 #include "CConsole.h"
 
 class CMenu

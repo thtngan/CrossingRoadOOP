@@ -20,7 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CBird.h" />
-    <ClInclude Include="CButton.h" />
     <ClInclude Include="CCar.h" />
     <ClInclude Include="CConsole.h" />
     <ClInclude Include="CElephant.h" />
@@ -34,7 +33,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CBird.cpp" />
-    <ClCompile Include="CButton.cpp" />
     <ClCompile Include="CCar.cpp" />
     <ClCompile Include="CConsole.cpp" />
     <ClCompile Include="CElephant.cpp" />
