@@ -13,11 +13,15 @@ using namespace std;
 
 class CMenu
 {
+private:
+	int typePlayer;
 
 public:
 	CMenu() = default;
 	~CMenu() = default;
 
+	void printTitle();
 	void menu();
+	void settings();
 };
 
