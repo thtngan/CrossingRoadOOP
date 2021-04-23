@@ -15,6 +15,10 @@ public:
 	void Draw(const int);
 	~CPlayer();
 
+	void setType(const int& t) {
+		this->_type = t;
+	}
+
 	//return sth
 	char** kind();
 	CPos getPos();

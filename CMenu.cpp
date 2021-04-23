@@ -3,6 +3,17 @@
 
 #include "CMenu.h"
 
+void CMenu::printTitle() {
+	int color = rand() % 16 + 1;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+	gotoXY(10, 3); cout << " ______  ______   ______   ______   ______  _____  ______   ______     ______   ______   ______   _____   ";
+	gotoXY(10, 4); cout << "| |     | |  | \\ / |  | \\ / |      / |       | |  | |  \\ \\ | | ____   | |  | \\ / |  | \\ | |  | | | | \\ \\  ";
+	gotoXY(10, 5); cout << "| |     | |__| | | |  | | '------. '------.  | |  | |  | | | |  | |   | |__| | | |  | | | |__| | | |  | | ";
+	gotoXY(10, 6); cout << "|_|____ |_|  \\_\\ \\_|__|_/  ____|_/  ____|_/ _|_|_ |_|  |_| |_|__|_|   |_|  \\_\\ \\_|__|_/ |_|  |_| |_|_/_/  ";
+	gotoXY(10, 7); cout << "                                                                                                          ";
+
+}
+
 void CMenu::menu() {
 	system("cls");
 
@@ -31,13 +42,7 @@ void CMenu::menu() {
 					cout << choice[i] << endl;
 				}
 
-				int color = rand() % 16 + 1;
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
-				gotoXY(10, 3); cout << " ______  ______   ______   ______   ______  _____  ______   ______     ______   ______   ______   _____   ";
-				gotoXY(10, 4); cout << "| |     | |  | \\ / |  | \\ / |      / |       | |  | |  \\ \\ | | ____   | |  | \\ / |  | \\ | |  | | | | \\ \\  ";
-				gotoXY(10, 5); cout << "| |     | |__| | | |  | | '------. '------.  | |  | |  | | | |  | |   | |__| | | |  | | | |__| | | |  | | ";
-				gotoXY(10, 6); cout << "|_|____ |_|  \\_\\ \\_|__|_/  ____|_/  ____|_/ _|_|_ |_|  |_| |_|__|_|   |_|  \\_\\ \\_|__|_/ |_|  |_| |_|_/_/  ";
-				gotoXY(10, 7); cout << "                                                                                                          ";
+				printTitle();
 
 				input = false;
 
@@ -83,4 +88,10 @@ void CMenu::menu() {
 		}
 
 	}
+}
+
+
+void CMenu::settings() {
+	system("cls");
+
 }
