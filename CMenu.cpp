@@ -59,6 +59,8 @@ void CMenu::menu() {
 				switch (pos) {
 				case 0: //New game
 					while (1) {
+						Sleep(2000);
+						map.printBorders();
 
 					}
 					break;

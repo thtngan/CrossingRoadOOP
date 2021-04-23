@@ -20,5 +20,5 @@ int main() {
 	FixConsoleWindow();
 	CMenu game;
 	game.menu();
-
+	
 }
