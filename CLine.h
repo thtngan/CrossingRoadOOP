@@ -1,10 +1,6 @@
 #pragma once
 #include "CObject.h"
 #include <vector>
-#include <windows.h>
-#include <conio.h>
-#include <cstdlib>
-#include <cstring>
 using namespace std;
 #define RIGHT 58
 #define LEFT 2
