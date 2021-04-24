@@ -27,6 +27,7 @@ public:
 
 	void printTitle();
 	void menu();
+	void loading();
 	void settings();
 };
 

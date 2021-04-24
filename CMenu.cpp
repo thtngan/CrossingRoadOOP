@@ -4,8 +4,10 @@
 #include "CMenu.h"
 
 void CMenu::printTitle() {
-	int color = rand() % 16 + 1;
+	int color = rand() % 15 + 1;
+	
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+	
 	gotoXY(10, 3); cout << " ______  ______   ______   ______   ______  _____  ______   ______     ______   ______   ______   _____   ";
 	gotoXY(10, 4); cout << "| |     | |  | \\ / |  | \\ / |      / |       | |  | |  \\ \\ | | ____   | |  | \\ / |  | \\ | |  | | | | \\ \\  ";
 	gotoXY(10, 5); cout << "| |     | |__| | | |  | | '------. '------.  | |  | |  | | | |  | |   | |__| | | |  | | | |__| | | |  | | ";
@@ -63,6 +65,7 @@ void CMenu::menu() {
 				switch (pos) {
 				case 0: //New game
 					while (1) {
+						loading();
 						Sleep(2000);
 						map.printBorders();
 						CObject* a = new CTrain();
@@ -80,9 +83,8 @@ void CMenu::menu() {
 					input = true;
 					break;
 				case 3: //Settings
-					Sleep(500);
+					Sleep(1000);
 					settings();
-					input = true;
 					break;
 				case 4: //Exit
 					system("cls");
@@ -98,28 +100,16 @@ void CMenu::menu() {
 
 
 void CMenu::settings() {
-	system("cls");
-	
-	const string choice[5] = { "Music: ", "Mode: ", "Player: "};
-	bool input = true;
-	int x = 35, y = 30, pos = 0;
-
-	ShowConsoleCursor(false);
-
-
-	//Print list of choice
-	for (int i = 0; i < 5; i++) {
-		gotoXY(x, y + i);
-		if (i == pos)
-		{
-			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
-		}
-		else
-		{
-			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-		}
-		cout << choice[i] << endl;
-	}
+	ClearScreen();
+	printTitle();
 
 	
+}
+
+void CMenu::loading() {
+	ClearScreen();
+	printTitle();
+	
+
+
 }

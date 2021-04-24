@@ -20,4 +20,5 @@ int main() {
 	game.menu();
 	//test conflict
 
+	return 0;
 }
