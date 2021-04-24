@@ -18,7 +18,6 @@ void CMenu::menu() {
 	system("cls");
 
 	const string choice[5] = { "New Game", "Load Game", "Rank", "Settings", "Exit" };
-
 	bool input = true;
 	int x = 35, y = 10, pos = 0;
 	
@@ -68,13 +67,17 @@ void CMenu::menu() {
 					}
 					break;
 				case 1: //Loadgame
+					cout << "Loadgame";
 					break;
 				case 2: //Rank
 					//Rank
+					cout << "Rank";
+
 					input = true;
 					break;
 				case 3: //Settings
-					//Settings
+					Sleep(500);
+					settings();
 					input = true;
 					break;
 				case 4: //Exit
@@ -89,7 +92,30 @@ void CMenu::menu() {
 }
 
 
+
 void CMenu::settings() {
 	system("cls");
+	
+	const string choice[5] = { "Music: ", "Mode: ", "Player: "};
+	bool input = true;
+	int x = 35, y = 30, pos = 0;
 
+	ShowConsoleCursor(false);
+
+
+	//Print list of choice
+	for (int i = 0; i < 5; i++) {
+		gotoXY(x, y + i);
+		if (i == pos)
+		{
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+		}
+		else
+		{
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+		}
+		cout << choice[i] << endl;
+	}
+
+	
 }

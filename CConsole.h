@@ -28,6 +28,7 @@
 
 void FixConsoleWindow();
 void ShowConsoleCursor(bool showFlag);
+void ClearScreen();
 
 class CConsole
 {
