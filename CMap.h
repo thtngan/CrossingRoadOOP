@@ -7,7 +7,7 @@
 #include <conio.h>
 #include "CPlayer.h"
 #include "CObject.h"
-
+#include "CCar.h"
 
 using namespace std;
 
@@ -26,6 +26,6 @@ public:
 	bool Print(CPos pos, char** kind, int h, int w); //height and width of thing to print
 	void printPlayer(); //draw player 
 	void printObject(CObject *); //draw another object
-
+	void printMap();
 
 };
