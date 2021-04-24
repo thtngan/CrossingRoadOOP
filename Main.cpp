@@ -19,6 +19,6 @@ int main() {
 	GetWindowRect(console, &r);
 	FixConsoleWindow();
 	CMenu game;
-	//game.menu();
-	game.settings();
+	game.menu();
+
 }

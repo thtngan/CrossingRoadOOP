@@ -78,3 +78,5 @@ CursorCol=1
 CursorRow=1
 TopLine=4
 LeftChar=1
+[Editors]
+Order=

@@ -10,12 +10,17 @@
 using namespace std;
 
 #include "CConsole.h"
-
+#include "CMap.h"
+#include "CObject.h"
+#include "CConsole.h"
+#include "CLine.h"
+#include "CTrain.h"
 class CMenu
 {
 private:
+	CMap map;
 	int typePlayer;
-
+	CLine line;
 public:
 	CMenu() = default;
 	~CMenu() = default;
