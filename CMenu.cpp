@@ -21,7 +21,7 @@ void CMenu::menu() {
 
 	const string choice[5] = { "New Game", "Load Game", "Rank", "Settings", "Exit" };
 	bool input = true;
-	int x = 35, y = 10, pos = 0;
+	int x = 50, y = 10, pos = 0;
 	
 	ShowConsoleCursor(false);
 
@@ -65,7 +65,7 @@ void CMenu::menu() {
 				switch (pos) {
 				case 0: //New game
 					while (1) {
-						loading();
+						//loading(); //loading forever :(((
 						Sleep(2000);
 						map.printBorders();
 						CObject* a = new CTrain();
@@ -85,6 +85,7 @@ void CMenu::menu() {
 				case 3: //Settings
 					Sleep(1000);
 					settings();
+					input = true;
 					break;
 				case 4: //Exit
 					system("cls");
@@ -103,6 +104,24 @@ void CMenu::settings() {
 	ClearScreen();
 	printTitle();
 
+	const char *choice[4] = { "Music: ", "Player: ", "FAQs", "Back"};
+
+	bool input = true;
+	int x = 35, y = 10, pos = 0;
+
+	//Print list of choice
+	for (int i = 0; i < 5; i++) {
+		gotoXY(x, y + i);
+		if (i == pos)
+		{
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+		}
+		else
+		{
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+		}
+		cout << choice[i] << endl;
+	}
 	
 }
 
@@ -110,6 +129,15 @@ void CMenu::loading() {
 	ClearScreen();
 	printTitle();
 	
-
+	gotoXY(30, 25);
+	cout << "[";
+	for (int i = 0; i <= 50; i++)
+	{
+		Sleep(35);
+		gotoXY(30 + i, 25);
+		printf("%c", 219);
+		gotoXY(30 + 25, 26);
+		cout << i * 2 << "%";
+	}
 
 }

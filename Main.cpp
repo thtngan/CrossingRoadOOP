@@ -16,9 +16,10 @@ int main() {
 	RECT r;
 	GetWindowRect(console, &r);
 	FixConsoleWindow();
+	
+
 	CMenu game;
 	game.menu();
-	//test conflict
 
 	return 0;
 }

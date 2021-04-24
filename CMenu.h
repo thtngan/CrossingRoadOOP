@@ -19,7 +19,7 @@ class CMenu
 {
 private:
 	CMap map;
-	int typePlayer;
+	int typePlayer; 
 	CLine line;
 public:
 	CMenu() = default;
