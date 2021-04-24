@@ -7,8 +7,6 @@
 #include "CMap.h"
 #include "CMenu.h"
 
-
-
 using namespace std;
 
 int main() {
@@ -20,5 +18,6 @@ int main() {
 	FixConsoleWindow();
 	CMenu game;
 	game.menu();
+	//test conflict
 
 }
