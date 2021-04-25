@@ -69,10 +69,10 @@ void CMap::printMap(){
 	gotoXY(100, 2); cout << "<Crossing Road Game>";	
 //	gotoXY(125, 3); cout << "LV. " << level.getLevel() << endl;
 	gotoXY(100, 5); cout << "CONTROL MANUAL" << endl;
-	gotoXY(100, 6); cout << "[ W ]: UP" << endl;
-	gotoXY(100, 7); cout << "[ S ]: DOWN" << endl;
-	gotoXY(100, 8); cout << "[ A ]: LEFT" << endl;
-	gotoXY(100, 9); cout << "[ D ]: RIGHT" << endl;
+	gotoXY(100, 6); cout << "[" << (char)24 << "]: UP" << endl;
+	gotoXY(100, 7); cout << "[" << (char)25 << "]: DOWN" << endl;
+	gotoXY(100, 8); cout << "[" << (char)27 << "]: LEFT" << endl;
+	gotoXY(100, 9); cout << "[" << (char)26 << "]: RIGHT" << endl;
 	gotoXY(100, 11); cout << "COMMANDS" << endl;
 	gotoXY(100, 12); cout << "[ L ]: Save game" << endl;
 	gotoXY(100, 13); cout << "[ T ]: Load game" << endl;
@@ -80,4 +80,33 @@ void CMap::printMap(){
 	printPlayer();
 	CObject *a = new CCar();
 	printObject(a);
+}
+void CMap::init(){
+	_player.~CPlayer();
+	new(&_player) CPlayer();
+	_lines.~CLines();
+	new(&_lines) CLines();
+	int padding[10] = {};
+	for (int i = 0; i < 10; ++i) {
+		int speed = rand() % 5;
+		bool direction = rand() % 2;
+		bool redLight = rand() % 2;
+		_lines.PushLine(new CLine(speed, direction, (i * 3) + 1));
+	}
+	CObject * newObj;
+	CPos pos;
+	int tryCount = 10000;
+	while (tryCount--) {
+		int rRow = (rand() % 9) + 1;
+		padding[rRow] += (rand() % 20) + 9;
+		pos = CPos((rRow * 3) + 1, padding[rRow]);
+		newObj = new CCar();
+		if (!newObj) 
+			break;
+		if (!_lines.PushObj(newObj, rRow)) {
+			delete newObj;
+		};
+	}
+	Sleep(200);
+	_lines.Transfer(0);
 }

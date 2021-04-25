@@ -8,6 +8,7 @@
 #include "CPlayer.h"
 #include "CObject.h"
 #include "CCar.h"
+#include "CLines.h"
 
 using namespace std;
 
@@ -17,7 +18,7 @@ private:
 	char _map[200][200];
 	const int _width = 60, _height = 20;
 	CPlayer _player;
-
+	CLines _lines;
 
 public:
 	CMap();
@@ -27,5 +28,5 @@ public:
 	void printPlayer(); //draw player 
 	void printObject(CObject *); //draw another object
 	void printMap();
-
+	void init();
 };
