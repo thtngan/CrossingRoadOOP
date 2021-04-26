@@ -122,10 +122,10 @@ void CMap::printMap(){
 	gotoXY(100, 2); cout << "<Crossing Road Game>";	
 //	gotoXY(125, 3); cout << "LV. " << level.getLevel() << endl;
 	gotoXY(100, 5); cout << "CONTROL MANUAL" << endl;
-	gotoXY(100, 6); cout << "[" << (char)24 << "]: UP" << endl;
-	gotoXY(100, 7); cout << "[" << (char)25 << "]: DOWN" << endl;
-	gotoXY(100, 8); cout << "[" << (char)27 << "]: LEFT" << endl;
-	gotoXY(100, 9); cout << "[" << (char)26 << "]: RIGHT" << endl;
+	gotoXY(100, 6); cout << "[" << 'W' << "]: UP" << endl;
+	gotoXY(100, 7); cout << "[" << 'S' << "]: DOWN" << endl;
+	gotoXY(100, 8); cout << "[" << 'A' << "]: LEFT" << endl;
+	gotoXY(100, 9); cout << "[" << 'D' << "]: RIGHT" << endl;
 	gotoXY(100, 11); cout << "COMMANDS" << endl;
 	gotoXY(100, 12); cout << "[ L ]: Save game" << endl;
 	gotoXY(100, 13); cout << "[ T ]: Load game" << endl;

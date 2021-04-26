@@ -65,8 +65,7 @@ void CMenu::menu() {
 				switch (pos) {
 				case 0: //New game
 					while (1) {
-						//loading(); //loading forever :(((
-						Sleep(2000);
+						loading();
 						map.printBorders();
 						CObject* a = new CTrain();
 						line.PushObj(a);
@@ -131,14 +130,16 @@ void CMenu::loading() {
 	ClearScreen();
 	printTitle();
 	
-	gotoXY(30, 25);
+	gotoXY(40, 20);
 	cout << "[";
 	for (int i = 0; i <= 50; i++)
 	{
 		Sleep(35);
-		gotoXY(30 + i, 25);
+		gotoXY(40 + i, 20);
 		printf("%c", 219);
-		gotoXY(30 + 25, 26);
+		gotoXY(40 + i, 21);
+		printf("%c", 219);
+		gotoXY(40 + 25, 22);
 		cout << i * 2 << "%";
 	}
 
