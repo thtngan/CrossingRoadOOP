@@ -51,12 +51,12 @@ void CMenu::menu() {
 			input = false;
 			switch (getch()) {
 				input = true;
-			case 72:
+			case 'w': case 'W':
 				input = true;
 				pos--;
 				pos = (pos + 5) % 5;
 				break;
-			case 80:
+			case 's': case 'S':
 				input = true;
 				pos++;
 				pos %= 5;
