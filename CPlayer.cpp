@@ -102,3 +102,5 @@ void CPlayer::moveLeft()
 		_pos.setPos(_pos.getX(), 5);
 	}
 }
+
+//diff
