@@ -1,5 +1,6 @@
 #include "CPlayer.h"
 #include<iostream>
+using namespace std;
 
 void CPlayer::Draw(const int type) {
 	_player = new char* [3];
@@ -68,20 +69,36 @@ void CPlayer::xuatPos()
 }
 void CPlayer::moveUp()
 {
-	_pos.setPos((_pos.getX() - 5), _pos.getY());
+	_pos.setPos((_pos.getX() - 2), _pos.getY());
+	if (_pos.getX() < 2)
+	{
+		_pos.setPos(2, _pos.getY());
+	}
 	//cout << "moved up: " << _pos.getX() << " " << _pos.getY() << endl;
 }
 void CPlayer::moveDown()
 {
-	_pos.setPos((_pos.getX() + 5), _pos.getY());
+	_pos.setPos((_pos.getX() + 2), _pos.getY());
+	/*if (_pos.getX() > 18)
+	{
+		_pos.setPos(18, _pos.getY());
+	}*/
 	//cout << "moved down: " << _pos.getX() << " " << _pos.getY() << endl;
 }
 void CPlayer::moveRight()
 {
-	_pos.setPos(_pos.getX(), (_pos.getY() + 8));
+	_pos.setPos(_pos.getX(), (_pos.getY() + 5));
+	if (_pos.getY() >55)
+	{
+		_pos.setPos(_pos.getX(), 55);
+	}
 	//cout << "moved right: " << _pos.getX() << " " << _pos.getY() << endl;
 }
 void CPlayer::moveLeft()
 {
-	_pos.setPos(_pos.getX(), (_pos.getY() - 8));
+	_pos.setPos(_pos.getX(), (_pos.getY() - 5));
+	if (_pos.getY() <= 5)
+	{
+		_pos.setPos(_pos.getX(), 5);
+	}
 }
