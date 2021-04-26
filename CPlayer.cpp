@@ -103,4 +103,3 @@ void CPlayer::moveLeft()
 	}
 }
 
-//diff

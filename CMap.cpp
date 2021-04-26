@@ -164,4 +164,3 @@ void CMap::printMap(){
 //	_lines.Transfer(0);
 //}
 
-//diff
