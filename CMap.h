@@ -28,5 +28,8 @@ public:
 	void printPlayer(); //draw player 
 	void printObject(CObject *); //draw another object
 	void printMap();
-	void init();
+	void move();
+	bool delPlayer(CPos pos, char** kind, int h, int w); //height and width of thing to del
+	//void init();
+
 };

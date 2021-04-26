@@ -1,4 +1,5 @@
 #include "CPlayer.h"
+#include<iostream>
 
 void CPlayer::Draw(const int type) {
 	_player = new char* [3];
@@ -60,4 +61,27 @@ int CPlayer::getW() {
 }
 int CPlayer::getH() {
 	return 3;
+}
+void CPlayer::xuatPos()
+{
+	std::cout << _pos.getX() << " " << _pos.getY() << std::endl;
+}
+void CPlayer::moveUp()
+{
+	_pos.setPos((_pos.getX() - 5), _pos.getY());
+	//cout << "moved up: " << _pos.getX() << " " << _pos.getY() << endl;
+}
+void CPlayer::moveDown()
+{
+	_pos.setPos((_pos.getX() + 5), _pos.getY());
+	//cout << "moved down: " << _pos.getX() << " " << _pos.getY() << endl;
+}
+void CPlayer::moveRight()
+{
+	_pos.setPos(_pos.getX(), (_pos.getY() + 8));
+	//cout << "moved right: " << _pos.getX() << " " << _pos.getY() << endl;
+}
+void CPlayer::moveLeft()
+{
+	_pos.setPos(_pos.getX(), (_pos.getY() - 8));
 }

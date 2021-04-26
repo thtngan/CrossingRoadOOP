@@ -24,6 +24,11 @@ public:
 	CPos getPos();
 	int getW();
 	int getH();
+	void xuatPos();
+	void moveUp();
+	void moveDown();
+	void moveRight();
+	void moveLeft();
 };
 
 #endif
