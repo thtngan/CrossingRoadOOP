@@ -96,11 +96,31 @@ void CMenu::menu() {
 	}
 }
 
-
-
-void CMenu::settings() {
+//New game
+void CMenu::loading() {
 	ClearScreen();
 	printTitle();
+
+	gotoXY(40, 20);
+	cout << "[";
+	for (int i = 0; i <= 50; i++)
+	{
+		Sleep(35);
+		gotoXY(40 + i, 20);
+		printf("%c", 219);
+		gotoXY(40 + i, 21);
+		printf("%c", 219);
+		gotoXY(40 + 25, 22);
+		cout << i * 2 << "%";
+	}
+
+}
+
+
+
+//Settings
+void CMenu::settings() {
+	ClearScreen();
 
 	const char *choice[4] = { "Music:", "Player:", "FAQs", "Back"};
 	string currentChoice[4] = { "ON", "(0.0)", "", "" };
@@ -140,6 +160,8 @@ void CMenu::settings() {
 				cout << choice[i] << currentChoice[i] << endl;
 			}
 
+			printTitle();
+
 			input = false;
 
 			switch (getch()) {
@@ -157,15 +179,7 @@ void CMenu::settings() {
 			case 13:
 				switch (pos) {
 				case 0: //Music
-					while (1) {
-						loading();
-						map.printBorders();
-						CObject* a = new CTrain();
-						line.PushObj(a);
-						map.printMap();
-						map.move();
-						//map.init();
-					}
+					
 					break;
 				case 1: //Player
 					cout << "Loadgame";
@@ -191,23 +205,3 @@ void CMenu::settings() {
 	
 }
 
-void CMenu::loading() {
-	ClearScreen();
-	printTitle();
-	
-	gotoXY(40, 20);
-	cout << "[";
-	for (int i = 0; i <= 50; i++)
-	{
-		Sleep(35);
-		gotoXY(40 + i, 20);
-		printf("%c", 219);
-		gotoXY(40 + i, 21);
-		printf("%c", 219);
-		gotoXY(40 + 25, 22);
-		cout << i * 2 << "%";
-	}
-
-}
-
-//diff

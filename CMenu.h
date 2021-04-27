@@ -30,7 +30,17 @@ public:
 
 	void printTitle();
 	void menu();
+
+	//New game
 	void loading();
+
+
+	//Load game
+
+	//Rank
+
+	//Settings
 	void settings();
+	void FAQs();
 };
 
