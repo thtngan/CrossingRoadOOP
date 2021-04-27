@@ -70,30 +70,43 @@ void CMap::move()
 			m = _getch();
 			switch (m)
 			{
-			case 75:
+			case 'a':
 				delPlayer(_player.getPos(), _player.kind(), _player.getH(), _player.getW());
 				_player.moveLeft();
 				printPlayer();
 				break;
-			case 72:
+			case 'w':
 				delPlayer(_player.getPos(), _player.kind(), _player.getH(), _player.getW());
 				_player.moveUp();
 				printPlayer();
 				break;
-			case 80:
+			case 's':
 				delPlayer(_player.getPos(), _player.kind(), _player.getH(), _player.getW());
 				_player.moveDown();
 				printPlayer();
 				break;
-			case 77:
+			case 'd':
 				delPlayer(_player.getPos(), _player.kind(), _player.getH(), _player.getW());
 				_player.moveRight();
 				printPlayer();
 				break;
 			case 'p':
 				gotoXY(25, 30);
-				cout << "Pause,";
-				system("pause");
+				cout << "PAUSED - Press p to continue";
+				bool t = 1;
+				while (t)
+				{
+					char a;
+					a = _getch();
+					switch (a)
+					{
+					case 'p':
+						t = false;
+						gotoXY(25, 30);
+						cout << "                             ";
+						break;
+					}
+				}
 				break;
 			}
 		}
