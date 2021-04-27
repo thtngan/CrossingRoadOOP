@@ -2,6 +2,7 @@
 #define CPlayer_h
 
 #include "CPos.h"
+#include "ConstantVar.h"
 
 class CPlayer
 {

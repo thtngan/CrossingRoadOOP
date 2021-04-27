@@ -26,22 +26,45 @@ void CPlayer::Draw(const int type) {
 		else _player[2][i] = ' ';
 	}
 
-	//type 1
 	//Draw head
-	_player[0][0] = ' ';
-	_player[0][1] = '(';
-	_player[0][2] = 'O';
-	_player[0][3] = '.';
-	_player[0][4] = 'O';
-	_player[0][5] = ')';
-	_player[0][6] = ' ';
+
+	//type 1
+	if (type == 0) {
+		_player[0][0] = ' ';
+		_player[0][1] = '(';
+		_player[0][2] = 'O';
+		_player[0][3] = '.';
+		_player[0][4] = 'O';
+		_player[0][5] = ')';
+		_player[0][6] = ' ';
+	}
+	else if (type == 1) {
+		_player[0][0] = ' ';
+		_player[0][1] = '(';
+		_player[0][2] = '^';
+		_player[0][3] = 'O';
+		_player[0][4] = '^';
+		_player[0][5] = ')';
+		_player[0][6] = ' ';
+	}
+	else {
+		_player[0][0] = ' ';
+		_player[0][1] = '(';
+		_player[0][2] = '>';
+		_player[0][3] = '_';
+		_player[0][4] = '<';
+		_player[0][5] = ')';
+		_player[0][6] = ' ';
+	}
+
 
 	
 }
 
 CPlayer::CPlayer() {
 	_pos.setPos(25, 20); //position default
-	Draw(1);		
+	_type = ConstantVar::_typePlayer;
+	Draw(_type);		
 }
 
 CPlayer::~CPlayer() {
@@ -52,6 +75,7 @@ CPlayer::~CPlayer() {
 }
 
 char** CPlayer::kind() {
+	Draw(ConstantVar::_typePlayer);
 	return _player;
 }
 CPos CPlayer::getPos() {
@@ -87,19 +111,19 @@ void CPlayer::moveDown()
 }
 void CPlayer::moveRight()
 {
-	_pos.setPos(_pos.getX(), (_pos.getY() + 5));
-	if (_pos.getY() >55)
+	_pos.setPos(_pos.getX(), (_pos.getY() + 3));
+	if (_pos.getY() >56)
 	{
-		_pos.setPos(_pos.getX(), 55);
+		_pos.setPos(_pos.getX(), 56);
 	}
 	//cout << "moved right: " << _pos.getX() << " " << _pos.getY() << endl;
 }
 void CPlayer::moveLeft()
 {
-	_pos.setPos(_pos.getX(), (_pos.getY() - 5));
-	if (_pos.getY() <= 5)
+	_pos.setPos(_pos.getX(), (_pos.getY() - 3));
+	if (_pos.getY() < 4)
 	{
-		_pos.setPos(_pos.getX(), 5);
+		_pos.setPos(_pos.getX(), 4);
 	}
 }
 
