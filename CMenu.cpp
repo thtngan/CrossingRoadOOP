@@ -116,11 +116,6 @@ void CMenu::loading() {
 
 }
 
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 277ce036591661f91f8c6ccd29ceddf7ccc8f53e
 //Settings
 void CMenu::settings() {
 	ClearScreen();
@@ -164,10 +159,6 @@ void CMenu::settings() {
 			}
 
 			printTitle();
-<<<<<<< HEAD
-
-=======
->>>>>>> 277ce036591661f91f8c6ccd29ceddf7ccc8f53e
 			input = false;
 
 			switch (getch()) {
@@ -185,9 +176,6 @@ void CMenu::settings() {
 			case 13:
 				switch (pos) {
 				case 0: //Music
-<<<<<<< HEAD
-					
-=======
 					isMusic = !isMusic;
 					if (isMusic) {
 						currentChoice[0] = "ON ";
@@ -196,7 +184,6 @@ void CMenu::settings() {
 						currentChoice[0] = "OFF";
 					}
 					input = true;
->>>>>>> 277ce036591661f91f8c6ccd29ceddf7ccc8f53e
 					break;
 				case 1: //Player
 					ConstantVar::_typePlayer = (ConstantVar::_typePlayer + 1) % 3;
@@ -228,8 +215,6 @@ void CMenu::settings() {
 	
 }
 
-<<<<<<< HEAD
-=======
 
 void CMenu::printFAQs() {
 	int color = rand() % 15 + 1;
@@ -282,4 +267,3 @@ void CMenu::printGB() {
 	}
 
 }
->>>>>>> 277ce036591661f91f8c6ccd29ceddf7ccc8f53e

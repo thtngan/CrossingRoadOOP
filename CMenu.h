@@ -43,13 +43,13 @@ public:
 
 	//Settings
 	void settings();
-<<<<<<< HEAD
+
 	void FAQs();
-=======
+
 	void printFAQs();
 
 	//Exit
 	void printGB();
->>>>>>> 277ce036591661f91f8c6ccd29ceddf7ccc8f53e
+
 };
 
