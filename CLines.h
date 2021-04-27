@@ -9,6 +9,7 @@ class CLines
 		bool PushObj(CObject* newObj, int line);
 		void PushLine(CLine* line);
 		int Transfer(const int&);
+		vector<CObject*> listObj();
 	protected:
 		vector<CLine*> _listLine;
 };

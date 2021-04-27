@@ -109,7 +109,7 @@ void CMap::printObject(CObject *obj) {
 	if(!print)
 		obj->setOutMap();
 }
-void CMap::printMap(){
+void CMap::printInstruct(){
 //	clrscr();
 	gotoXY(0, 0);
 	for (int i = 0; i <= _height + 1; ++i) {
@@ -137,28 +137,66 @@ void CMap::init(){
 	new(&_player) CPlayer();
 	_lines.~CLines();
 	new(&_lines) CLines();
-	int padding[10] = {};
-	for (int i = 0; i < 10; ++i) {
-		int speed = rand() % 50;
+	int road[5] = { 0 };
+	for (int i = 0; i < 5; ++i) {
+		int speed = rand() % 100;
 		bool direction = rand() % 2;
-		bool redLight = rand() % 2;
-		_lines.PushLine(new CLine(speed, direction, (i * 3) + 1));
+		_lines.PushLine(new CLine(speed, direction, (i * 4) + 1));
 	}
 	CObject * newObj;
 	CPos pos;
 	int tryCount = 10000;
 	while (tryCount--) { 
-		int rRow = (rand() % 9) + 1;
-		padding[rRow] += (rand() % 20) + 9;
-		pos = CPos((rRow * 3) + 1, padding[rRow]);
-		newObj = new CCar();
+		int LineNb = (rand() % 4) + 1;
+		road[LineNb] += (rand() % 20) + 9;
+		pos = CPos((LineNb * 4) + 1, road[LineNb]);
+		newObj = new CBird(pos);
 		if (!newObj) 
 			break;
-		if (!_lines.PushObj(newObj, rRow)) {
+		if (!_lines.PushObj(newObj, LineNb)) {
 			delete newObj;
 		};
 	}
 	Sleep(200);
 	_lines.Transfer(0);
+}
+void CMap::printMap() {
+	//resetMap();
+	vector <CObject*> enemyList = _lines.listObj(); //enemyList = 0 
+	for (int i = 0; i < (int)enemyList.size(); ++i) {
+		//drawEnemies(enemyList[i]);
+		//if (_player.crash(enemyList[i]->getPos(), enemyList[i]->getWidth() - 3, enemyList[i]->getHeight())) {
+			//if (!constantVar::isMute) enemyList[i]->sound();
+			//player.killPlayer();
+			//randomNextState();
+			//delPlayer();
+			printPlayer();
+			Sleep(300);
+			//clrscr();
+			printInstruct();
+			//delPlayer();
+			//bombEffect();
+			return;
+		//}
+	}
+	//drawPlayer();
+}
+void CMap::random() {
+	srand(time(NULL));
+	CObject* newObj;
+	CPos pos;
+	int tryCount = 10000;
+	while (tryCount--) {
+		int LineNb = (rand() % 4) + 1;
+		pos = CPos((LineNb * 4) + 1, 4);
+		newObj = new CBird(pos);
+		if (!newObj) break;
+		if (!_lines.PushObj(newObj, LineNb)) {
+			delete newObj;
+		};
+	}
+	++t;
+	int tmp = _lines.Transfer(t);
+	printMap();
 }
 

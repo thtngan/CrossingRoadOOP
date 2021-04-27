@@ -62,11 +62,16 @@ void CMenu::menu() {
 				switch (pos) {
 				case 0: //New game
 					while (1) {
-						loading(); 
+						//loading(); 
 						map.printBorders();
-						map.printMap();
-						map.move();
+						map.printInstruct();
+						//map.move();
 						map.init();
+						Sleep(500);
+						int non_stop = true;
+						while (non_stop) {
+							map.random();
+						}
 					}
 					break;
 				case 1: //Loadgame

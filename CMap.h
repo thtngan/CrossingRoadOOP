@@ -7,7 +7,7 @@
 #include <conio.h>
 #include "CPlayer.h"
 #include "CObject.h"
-#include "CCar.h"
+#include "CBird.h"
 #include "CLines.h"
 
 using namespace std;
@@ -16,10 +16,10 @@ class CMap
 {
 private:
 	char _map[200][200];
-	const int _width = 60, _height = 20;
+	const int _width = 92, _height = 27;
 	CPlayer _player;
 	CLines _lines;
-
+	int t = 0;
 public:
 	CMap();
 	~CMap() = default;
@@ -27,9 +27,10 @@ public:
 	bool Print(CPos pos, char** kind, int h, int w); //height and width of thing to print
 	void printPlayer(); //draw player 
 	void printObject(CObject *); //draw another object
+	void printInstruct();
 	void printMap();
 	void move();
 	bool delPlayer(CPos pos, char** kind, int h, int w); //height and width of thing to del
 	void init();
-
+	void random();
 };

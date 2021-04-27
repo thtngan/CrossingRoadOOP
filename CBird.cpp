@@ -1,6 +1,6 @@
 #include "CBird.h"
 
-CBird::CBird() : CObject(){
+CBird::CBird(CPos pos) : CObject(pos){
 	_bird = new char* [4];
 	for (int i = 0; i < 4; i++)
 		_bird[i] = new char[7];

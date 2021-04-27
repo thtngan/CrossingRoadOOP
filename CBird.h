@@ -7,7 +7,7 @@ class CBird : public CObject
 private:
 	char** _bird;
 public:
-	CBird();
+	CBird(CPos pos);
 	~CBird();
 	
 	//return sth
