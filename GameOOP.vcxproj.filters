@@ -54,6 +54,9 @@
     <ClInclude Include="CLines.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ConstantVar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CPlayer.cpp">
@@ -93,6 +96,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CLines.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ConstantVar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

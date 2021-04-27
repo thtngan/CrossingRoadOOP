@@ -6,8 +6,11 @@
 #include "CCar.h"
 #include "CMap.h"
 #include "CMenu.h"
+#include "ConstantVar.h"
 
 using namespace std;
+
+int ConstantVar::_typePlayer = 0;
 
 int main() {
 	srand(time(NULL));
@@ -20,6 +23,7 @@ int main() {
 
 	CMenu game;
 	game.menu();
+	game.printGB();
 
 	return 0;
 }

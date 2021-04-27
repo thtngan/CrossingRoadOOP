@@ -29,6 +29,7 @@
     <ClInclude Include="CMap.h" />
     <ClInclude Include="CMenu.h" />
     <ClInclude Include="CObject.h" />
+    <ClInclude Include="ConstantVar.h" />
     <ClInclude Include="CPlayer.h" />
     <ClInclude Include="CPos.h" />
     <ClInclude Include="CTrain.h" />
@@ -44,6 +45,7 @@
     <ClCompile Include="CMap.cpp" />
     <ClCompile Include="CMenu.cpp" />
     <ClCompile Include="CObject.cpp" />
+    <ClCompile Include="ConstantVar.cpp" />
     <ClCompile Include="CPlayer.cpp" />
     <ClCompile Include="CTrain.cpp" />
     <ClCompile Include="Main.cpp" />

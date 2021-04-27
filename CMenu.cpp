@@ -117,7 +117,10 @@ void CMenu::loading() {
 }
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 277ce036591661f91f8c6ccd29ceddf7ccc8f53e
 //Settings
 void CMenu::settings() {
 	ClearScreen();
@@ -132,10 +135,10 @@ void CMenu::settings() {
 		currentChoice[1] = "OFF";
 	}
 
-	if (typePlayer == 0) {
+	if (ConstantVar::_typePlayer == 0) {
 		currentChoice[1] = "(O.O)";
 	}
-	else if (typePlayer == 1) {
+	else if (ConstantVar::_typePlayer == 1) {
 		currentChoice[1] = "(^O^)";
 	}
 	else {
@@ -161,7 +164,10 @@ void CMenu::settings() {
 			}
 
 			printTitle();
+<<<<<<< HEAD
 
+=======
+>>>>>>> 277ce036591661f91f8c6ccd29ceddf7ccc8f53e
 			input = false;
 
 			switch (getch()) {
@@ -179,18 +185,36 @@ void CMenu::settings() {
 			case 13:
 				switch (pos) {
 				case 0: //Music
+<<<<<<< HEAD
 					
+=======
+					isMusic = !isMusic;
+					if (isMusic) {
+						currentChoice[0] = "ON ";
+					}
+					else {
+						currentChoice[0] = "OFF";
+					}
+					input = true;
+>>>>>>> 277ce036591661f91f8c6ccd29ceddf7ccc8f53e
 					break;
 				case 1: //Player
-					cout << "Loadgame";
-					break;
-				case 2: //FAQs
-					//Rank
-					cout << "Rank";
-
+					ConstantVar::_typePlayer = (ConstantVar::_typePlayer + 1) % 3;
+					if (ConstantVar::_typePlayer == 0) {
+						currentChoice[1] = "(O.O)";
+					}
+					else if (ConstantVar::_typePlayer == 1) {
+						currentChoice[1] = "(^O^)";
+					}
+					else {
+						currentChoice[1] = "(>_<)";
+					}
 					input = true;
 					break;
-
+				case 2: //FAQs
+					printFAQs();
+					input = true;
+					break;
 				case 3: //Back
 					system("cls");
 					return;
@@ -202,6 +226,60 @@ void CMenu::settings() {
 	}
 
 	
-	
 }
 
+<<<<<<< HEAD
+=======
+
+void CMenu::printFAQs() {
+	int color = rand() % 15 + 1;
+
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+
+	gotoXY(30, 13); cout << "WHAT IS THIS?                 " << endl;
+	gotoXY(30, 14); cout << "Crossing Road is a little game with a simple concept:" << endl;
+	gotoXY(30, 15); cout << "help your character cross a road." << endl;
+	gotoXY(30, 17); cout << "HOW TO PLAY?                 " << endl;
+	gotoXY(30, 18); cout << "Use 'WS' to move your character from side to side" << endl;
+	gotoXY(30, 19); cout << "while 'AD' to move left and right." << endl;
+	gotoXY(45, 22); cout << ".... Press any key to hide FAQs ...." << endl;
+
+	if (getch()) {
+		ClearScreen();
+		return;
+	}
+
+}
+
+
+//Exit
+void CMenu::printGB() {
+	int color = rand() % 15 + 1;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+
+	
+	CTrain train;
+
+	gotoXY(40, 10);
+	for (int i = 40; i >= 0; i--)
+	{
+		Sleep(35);
+		gotoXY(40 + i, 10);
+		for (int j = 0; j < train.getW(); j++)
+			cout << train.kind()[0][j];
+
+		gotoXY(40 + i, 11);
+		for (int j = 0; j < train.getW(); j++)
+			cout << train.kind()[1][j];
+		
+		gotoXY(40 + i, 12);
+		for (int j = 0; j < train.getW(); j++)
+			cout << train.kind()[2][j];
+
+		gotoXY(40 + i, 13);
+		for (int j = 0; j < train.getW(); j++)
+			cout << train.kind()[3][j];
+	}
+
+}
+>>>>>>> 277ce036591661f91f8c6ccd29ceddf7ccc8f53e
