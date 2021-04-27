@@ -87,19 +87,19 @@ void CPlayer::moveDown()
 }
 void CPlayer::moveRight()
 {
-	_pos.setPos(_pos.getX(), (_pos.getY() + 5));
-	if (_pos.getY() >55)
+	_pos.setPos(_pos.getX(), (_pos.getY() + 3));
+	if (_pos.getY() >56)
 	{
-		_pos.setPos(_pos.getX(), 55);
+		_pos.setPos(_pos.getX(), 56);
 	}
 	//cout << "moved right: " << _pos.getX() << " " << _pos.getY() << endl;
 }
 void CPlayer::moveLeft()
 {
-	_pos.setPos(_pos.getX(), (_pos.getY() - 5));
-	if (_pos.getY() <= 5)
+	_pos.setPos(_pos.getX(), (_pos.getY() - 3));
+	if (_pos.getY() < 4)
 	{
-		_pos.setPos(_pos.getX(), 5);
+		_pos.setPos(_pos.getX(), 4);
 	}
 }
 
