@@ -67,11 +67,9 @@ void CMenu::menu() {
 					while (1) {
 						loading();
 						map.printBorders();
-						CObject* a = new CTrain();
-						line.PushObj(a);
 						map.printMap();
 						map.move();
-						//map.init();
+						map.init();
 					}
 					break;
 				case 1: //Loadgame

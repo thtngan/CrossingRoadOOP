@@ -30,6 +30,6 @@ public:
 	void printMap();
 	void move();
 	bool delPlayer(CPos pos, char** kind, int h, int w); //height and width of thing to del
-	//void init();
+	void init();
 
 };
