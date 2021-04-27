@@ -174,25 +174,6 @@ void CMap::init(){
 	_lines.Transfer(0);
 }
 void CMap::printMap() {
-	//resetMap();
-	vector <CObject*> enemyList = _lines.listObj(); //enemyList = 0 
-	for (int i = 0; i < (int)enemyList.size(); ++i) {
-		//drawEnemies(enemyList[i]);
-		//if (_player.crash(enemyList[i]->getPos(), enemyList[i]->getWidth() - 3, enemyList[i]->getHeight())) {
-			//if (!constantVar::isMute) enemyList[i]->sound();
-			//player.killPlayer();
-			//randomNextState();
-			//delPlayer();
-			printPlayer();
-			Sleep(300);
-			//clrscr();
-			printInstruct();
-			//delPlayer();
-			//bombEffect();
-			return;
-		//}
-	}
-	//drawPlayer();
 }
 void CMap::random() {
 	srand(time(NULL));
