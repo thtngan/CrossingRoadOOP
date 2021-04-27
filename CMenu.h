@@ -19,8 +19,11 @@ class CMenu
 {
 private:
 	CMap map;
-	int typePlayer; 
 	CLine line;
+
+	int typePlayer; //0: (O.O), 1: (^O^), 2: (>O<)
+	bool isMusic; //true: ON, false: OFF
+
 public:
 	CMenu() = default;
 	~CMenu() = default;
