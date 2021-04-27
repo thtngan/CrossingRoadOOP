@@ -15,13 +15,15 @@ using namespace std;
 #include "CConsole.h"
 #include "CLine.h"
 #include "CTrain.h"
+#include "ConstantVar.h"
+
 class CMenu
 {
 private:
 	CMap map;
 	CLine line;
 
-	int typePlayer; //0: (O.O), 1: (^O^), 2: (>_<)
+	//int typePlayer; //0: (O.O), 1: (^O^), 2: (>_<)
 	bool isMusic; //true: ON, false: OFF
 
 public:

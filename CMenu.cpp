@@ -131,10 +131,10 @@ void CMenu::settings() {
 		currentChoice[1] = "OFF";
 	}
 
-	if (typePlayer == 0) {
+	if (ConstantVar::_typePlayer == 0) {
 		currentChoice[1] = "(O.O)";
 	}
-	else if (typePlayer == 1) {
+	else if (ConstantVar::_typePlayer == 1) {
 		currentChoice[1] = "(^O^)";
 	}
 	else {
@@ -187,11 +187,11 @@ void CMenu::settings() {
 					input = true;
 					break;
 				case 1: //Player
-					typePlayer = (typePlayer + 1) % 3;
-					if (typePlayer == 0) {
+					ConstantVar::_typePlayer = (ConstantVar::_typePlayer + 1) % 3;
+					if (ConstantVar::_typePlayer == 0) {
 						currentChoice[1] = "(O.O)";
 					}
-					else if (typePlayer == 1) {
+					else if (ConstantVar::_typePlayer == 1) {
 						currentChoice[1] = "(^O^)";
 					}
 					else {
