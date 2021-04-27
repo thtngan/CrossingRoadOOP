@@ -44,9 +44,6 @@ void CMenu::menu() {
 				}
 
 				printTitle();
-
-				input = false;
-
 			}
 			input = false;
 			switch (getch()) {
@@ -65,7 +62,7 @@ void CMenu::menu() {
 				switch (pos) {
 				case 0: //New game
 					while (1) {
-						loading();
+						loading(); 
 						map.printBorders();
 						CObject* a = new CTrain();
 						line.PushObj(a);
@@ -105,24 +102,47 @@ void CMenu::settings() {
 	ClearScreen();
 	printTitle();
 
-	const char *choice[4] = { "Music: ", "Player: ", "FAQs", "Back"};
+	const char *choice[4] = { "Music:", "Player:", "FAQs", "Back"};
+	string currentChoice[4] = { "ON", "(0.0)", "", "" };
 
-	bool input = true;
-	int x = 35, y = 10, pos = 0;
-
-	//Print list of choice
-	for (int i = 0; i < 5; i++) {
-		gotoXY(x, y + i);
-		if (i == pos)
-		{
-			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
-		}
-		else
-		{
-			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-		}
-		cout << choice[i] << endl;
+	if (isMusic) {
+		currentChoice[0] = "ON";
 	}
+	else {
+		currentChoice[1] = "OFF";
+	}
+
+	if (typePlayer == 0) {
+		currentChoice[1] = "(O.O)";
+	}
+	else if (typePlayer == 1) {
+		currentChoice[1] = "(^O^)";
+	}
+	else {
+		currentChoice[1] = "(>O<)";
+	}
+	bool input = true;
+	int x = 50, y = 10, pos = 0;
+
+	while (true) {
+		if (input) {
+			//Print list of choice
+			for (int i = 0; i < 5; i++) {
+				gotoXY(x, y + i);
+				if (i == pos)
+				{
+					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+				}
+				else
+				{
+					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+				}
+				cout << choice[i] << " " << currentChoice[i] << endl;
+			}
+		}
+	}
+
+	
 	
 }
 
