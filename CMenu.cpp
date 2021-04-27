@@ -81,7 +81,7 @@ void CMenu::menu() {
 					input = true;
 					break;
 				case 3: //Settings
-					Sleep(1000);
+					Sleep(500);
 					settings();
 					input = true;
 					break;
@@ -127,7 +127,7 @@ void CMenu::settings() {
 	while (true) {
 		if (input) {
 			//Print list of choice
-			for (int i = 0; i < 5; i++) {
+			for (int i = 0; i < 4; i++) {
 				gotoXY(x, y + i);
 				if (i == pos)
 				{
@@ -137,8 +137,53 @@ void CMenu::settings() {
 				{
 					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 				}
-				cout << choice[i] << " " << currentChoice[i] << endl;
+				cout << choice[i] << currentChoice[i] << endl;
 			}
+
+			input = false;
+
+			switch (getch()) {
+				input = true;
+			case 'w': case 'W':
+				input = true;
+				pos--;
+				pos = (pos + 4) % 4;
+				break;
+			case 's': case 'S':
+				input = true;
+				pos++;
+				pos %= 4;
+				break;
+			case 13:
+				switch (pos) {
+				case 0: //Music
+					while (1) {
+						loading();
+						map.printBorders();
+						CObject* a = new CTrain();
+						line.PushObj(a);
+						map.printMap();
+						map.move();
+						//map.init();
+					}
+					break;
+				case 1: //Player
+					cout << "Loadgame";
+					break;
+				case 2: //FAQs
+					//Rank
+					cout << "Rank";
+
+					input = true;
+					break;
+
+				case 3: //Back
+					system("cls");
+					return;
+				}
+				break;
+			}
+
 		}
 	}
 
