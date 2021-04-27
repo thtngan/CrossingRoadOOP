@@ -20,6 +20,7 @@ int main() {
 
 	CMenu game;
 	game.menu();
+	game.printGB();
 
 	return 0;
 }

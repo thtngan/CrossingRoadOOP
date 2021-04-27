@@ -44,5 +44,6 @@ public:
 	void printFAQs();
 
 	//Exit
+	void printGB();
 };
 

@@ -214,7 +214,6 @@ void CMenu::settings() {
 	}
 
 	
-	
 }
 
 
@@ -234,6 +233,38 @@ void CMenu::printFAQs() {
 	if (getch()) {
 		ClearScreen();
 		return;
+	}
+
+}
+
+
+//Exit
+void CMenu::printGB() {
+	int color = rand() % 15 + 1;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+
+	
+	CTrain train;
+
+	gotoXY(40, 10);
+	for (int i = 40; i >= 0; i--)
+	{
+		Sleep(35);
+		gotoXY(40 + i, 10);
+		for (int j = 0; j < train.getW(); j++)
+			cout << train.kind()[0][j];
+
+		gotoXY(40 + i, 11);
+		for (int j = 0; j < train.getW(); j++)
+			cout << train.kind()[1][j];
+		
+		gotoXY(40 + i, 12);
+		for (int j = 0; j < train.getW(); j++)
+			cout << train.kind()[2][j];
+
+		gotoXY(40 + i, 13);
+		for (int j = 0; j < train.getW(); j++)
+			cout << train.kind()[3][j];
 	}
 
 }
