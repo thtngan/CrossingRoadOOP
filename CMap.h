@@ -16,7 +16,7 @@ class CMap
 {
 private:
 	char _map[200][200];
-	const int _width = 92, _height = 27;
+	const int _width = 130, _height = 37;
 	CPlayer _player;
 	CLines _lines;
 	int t = 0;

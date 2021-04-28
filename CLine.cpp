@@ -49,7 +49,7 @@ int CLine::Transfer(int t) {
 	int nDel = 0;
 	if (_direction)
 	{
-		gotoXY(RIGHT + 47, _curLine);
+		gotoXY(RIGHT + 69, _curLine);
 	}
 	else
 	{
@@ -61,7 +61,7 @@ int CLine::Transfer(int t) {
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
 	else
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);
-	printf("%c", 254);
+	printf("%c", 4);
 	if (!_trafficLight)
 		return nDel;
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);

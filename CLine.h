@@ -2,7 +2,7 @@
 #include "CObject.h"
 #include <vector>
 using namespace std;
-#define RIGHT 47
+#define RIGHT 65
 #define LEFT 2
 
 class CLine
