@@ -299,17 +299,16 @@ void CMenu::leaderBoard()
 		y = y + 2;
 	}
 	f.close();
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);
+	gotoXY(73, 30); cout << "PRESS--ANY--KEY--TO--GO--BACK";
 	while (true)
 	{
 		if (_kbhit())
 		{
-			char
-				m = _getch();
-			switch (m)
-			{
-			case 'b':
+			if (getch()) 
+			{ 
 				system("cls");
-				return;
+				return; 
 			}
 		}
 	}
