@@ -18,6 +18,7 @@ int main() {
 	HWND console = GetConsoleWindow();
 	RECT r;
 	GetWindowRect(console, &r);
+	MoveWindow(console, r.left, r.top, 1400, 700, TRUE);
 	FixConsoleWindow();
 	
 
