@@ -1,8 +1,9 @@
 #include "CLine.h"
 
-CLine::CLine(int speed, bool direction, int curLine) {
+CLine::CLine(int speed, bool direction, bool trafficLight, int curLine) {
 	_speed = speed;
 	_direction = direction;
+	_trafficLight = trafficLight;
 	_curLine = curLine;
 	_listObj.reserve(100);
 }
@@ -45,7 +46,7 @@ void CLine::DelObj(CPos pos, int w, int h) {
 	}
 }
 int CLine::Transfer(int t) {
-	int nDelete = 0;
+	int nDel = 0;
 	if (_direction)
 	{
 		gotoXY(RIGHT + 47, _curLine);
@@ -54,6 +55,16 @@ int CLine::Transfer(int t) {
 	{
 		gotoXY(LEFT, _curLine);
 	}
+	if (t == 0 || (!_trafficLight && (rand() % 8 == 0)) || (_trafficLight && (rand() % 8 == 0)))
+		_trafficLight = !_trafficLight;
+	if(_trafficLight)
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
+	else
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);
+	printf("%c", 254);
+	if (!_trafficLight)
+		return nDel;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
 	vector <CObject*> newList;
 	newList.reserve(100);
 	for (int i = 0; i < (int)_listObj.size(); ++i) {
@@ -66,7 +77,7 @@ int CLine::Transfer(int t) {
 		bool print = PrintObj(curObj->getPos(), curObj->kind(), curObj->getW(), curObj->getH()); 
 		if (!print) {
 			curObj->setOutMap();
-			++nDelete;
+			++nDel;
 		}
 		if (curObj->isOutMap()) {
 			delete curObj;
@@ -76,7 +87,7 @@ int CLine::Transfer(int t) {
 		}
 	}
 	_listObj = newList;
-	return nDelete;
+	return nDel;
 }
 int CLine::getSpeed(){
 	return _speed;

@@ -153,8 +153,9 @@ void CMap::init(){
 	int road[5] = { 0 };
 	for (int i = 0; i < 5; ++i) {
 		int speed = rand() % 100;
+		bool trafficLight = rand() % 2;
 		bool direction = rand() % 2;
-		_lines.PushLine(new CLine(speed, direction, (i * 4) + 1));
+		_lines.PushLine(new CLine(speed, direction, trafficLight, (i * 4) + 1));
 	}
 	CObject * newObj;
 	CPos pos;

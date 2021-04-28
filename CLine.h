@@ -10,7 +10,7 @@ class CLine
 public:
 	CLine() = default;
 	~CLine() = default;
-	CLine(int speed, bool direction, int curLine);
+	CLine(int speed, bool direction,bool trafficLight, int curLine);
 	bool PrintObj(CPos pos, char** kind, int w, int h);
 	bool PushObj(CObject* newObj);	
 	void DelObj(CPos pos, int w, int h);
@@ -23,5 +23,6 @@ protected:
 	vector<CObject*> _listObj;
 	int _speed, _curLine;
 	bool _direction; // true is from left, false is from right 
+	bool _trafficLight; // true is green, false is red
 };
 
