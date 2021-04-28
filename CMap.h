@@ -10,6 +10,7 @@
 #include "CBird.h"
 #include "CLines.h"
 
+
 using namespace std;
 
 class CMap
@@ -17,10 +18,11 @@ class CMap
 private:
 	char _map[200][200];
 	const int _width = 130, _height = 37;
-	CPlayer _player;
+	//CPlayer _player;
 	CLines _lines;
 	int t = 0;
 public:
+	CPlayer _player;
 	CMap();
 	~CMap() = default;
 	void printBorders();
@@ -29,7 +31,6 @@ public:
 	void printObject(CObject *); //draw another object
 	void printInstruct();
 	void printMap();
-	void move();
 	bool delPlayer(CPos pos, char** kind, int h, int w); //height and width of thing to del
 	void init();
 	void random();

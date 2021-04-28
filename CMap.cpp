@@ -60,58 +60,7 @@ bool CMap::delPlayer(CPos pos, char** kind, int h, int w)
 	}
 	return true;
 }
-void CMap::move()
-{
-	char m;
-	while (true)
-	{
-		if (_kbhit())
-		{
-			m = _getch();
-			switch (m)
-			{
-			case 'a':
-				delPlayer(_player.getPos(), _player.kind(), _player.getH(), _player.getW());
-				_player.moveLeft();
-				printPlayer();
-				break;
-			case 'w':
-				delPlayer(_player.getPos(), _player.kind(), _player.getH(), _player.getW());
-				_player.moveUp();
-				printPlayer();
-				break;
-			case 's':
-				delPlayer(_player.getPos(), _player.kind(), _player.getH(), _player.getW());
-				_player.moveDown();
-				printPlayer();
-				break;
-			case 'd':
-				delPlayer(_player.getPos(), _player.kind(), _player.getH(), _player.getW());
-				_player.moveRight();
-				printPlayer();
-				break;
-			case 'p':
-				gotoXY(25, 30);
-				cout << "PAUSED - Press p to continue";
-				bool t = 1;
-				while (t)
-				{
-					char a;
-					a = _getch();
-					switch (a)
-					{
-					case 'p':
-						t = false;
-						gotoXY(25, 30);
-						cout << "                             ";
-						break;
-					}
-				}
-				break;
-			}
-		}
-	}
-}
+
 void CMap::printObject(CObject *obj) {
 	bool print = Print(
 		obj->getPos(),
@@ -193,5 +142,6 @@ void CMap::random() {
 	++t;
 	int tmp = _lines.Transfer(t);
 	printMap();
+	Sleep(10);
 }
 

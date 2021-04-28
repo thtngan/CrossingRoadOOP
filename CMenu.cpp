@@ -2,6 +2,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include "CMenu.h"
+#include <thread>
 
 void CMenu::printTitle() {
 	int color = rand() % 15 + 1;
@@ -69,8 +70,61 @@ void CMenu::menu() {
 						map.init();
 						Sleep(500);
 						int non_stop = true;
-						while (non_stop) {
-							map.random();
+						char m;
+						bool flag = true;
+						while (non_stop) 
+						{
+							if (flag) 
+							{
+								map.random();
+								if (_kbhit())
+								{
+									m = _getch();
+									fflush(stdin);
+									switch (m)
+									{
+									case 'a':
+										map.delPlayer(map._player.getPos(), map._player.kind(), map._player.getH(), map._player.getW());
+										map._player.moveLeft();
+										map.printPlayer();
+										break;
+									case 'w':
+										map.delPlayer(map._player.getPos(), map._player.kind(), map._player.getH(), map._player.getW());
+										map._player.moveUp();
+										map.printPlayer();
+										break;
+									case 's':
+										map.delPlayer(map._player.getPos(), map._player.kind(), map._player.getH(), map._player.getW());
+										map._player.moveDown();
+										map.printPlayer();
+										break;
+									case 'd':
+										map.delPlayer(map._player.getPos(), map._player.kind(), map._player.getH(), map._player.getW());
+										map._player.moveRight();
+										map.printPlayer();
+										break;
+									case 'p':
+										flag = false;
+										gotoXY(50, 30);
+										cout << "PAUSED - Press p to continue";
+									}
+								}
+							}
+							else
+							{
+								if (_kbhit())
+								{
+									m = _getch();
+									switch (m) 
+									{
+									case 'p':
+										flag = true;
+										gotoXY(50, 30);
+										cout << "                            ";
+										break;
+									}
+								}
+							}
 						}
 					}
 					break;

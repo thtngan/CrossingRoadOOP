@@ -112,9 +112,9 @@ void CPlayer::moveDown()
 void CPlayer::moveRight()
 {
 	_pos.setPos(_pos.getX(), (_pos.getY() + 3));
-	if (_pos.getY() >56)
+	if (_pos.getY() > 116)
 	{
-		_pos.setPos(_pos.getX(), 56);
+		_pos.setPos(_pos.getX(), 116);
 	}
 	//cout << "moved right: " << _pos.getX() << " " << _pos.getY() << endl;
 }
