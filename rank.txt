@@ -1,0 +1,5 @@
+Ngan     100
+Chym     95
+Chon     89
+ABC      77
+DEF      65

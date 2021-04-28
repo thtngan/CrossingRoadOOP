@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <string>
+#include <fstream>
 #include <windows.h>
 #include <conio.h>
 
@@ -40,7 +41,7 @@ public:
 	//Load game
 
 	//Rank
-
+	void leaderBoard();
 	//Settings
 	void settings();
 

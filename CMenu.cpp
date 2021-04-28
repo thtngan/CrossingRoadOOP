@@ -2,7 +2,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include "CMenu.h"
-#include <thread>
 
 void CMenu::printTitle() {
 	int color = rand() % 15 + 1;
@@ -134,7 +133,7 @@ void CMenu::menu() {
 				case 2: //Rank
 					//Rank
 					cout << "Rank";
-
+					leaderBoard();
 					input = true;
 					break;
 				case 3: //Settings
@@ -272,7 +271,49 @@ void CMenu::settings() {
 	
 }
 
-
+void CMenu::leaderBoard()
+{
+	system("cls");
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);
+	gotoXY(50, 1); cout << "(                                                                     ";
+	gotoXY(50, 2); cout << ")/ )                 (                    )                       (    ";
+	gotoXY(50, 3); cout << "(()/(     (      )    )/ )    (   (     ( /(            )   (      )/ )";
+	gotoXY(50, 4); cout << " /(_))   ))/  ( /(   (()/(   ))/  )(    )/())   (    ( /(   )(    (()/(";
+	gotoXY(50, 5); cout << "(_))    /((_ ))(_))   ((_) )/((_)(()/  ((_)/    )/   )(_)) (()/    ((_))";
+	gotoXY(50, 6); cout << "| |    (_))  ((_)_    _| | (_))   ((_) | |(_)  ((_) ((_)_   ((_)   _| |";
+	gotoXY(50, 7); cout << "| |__  / -_) / _` | / _` | / -_) | '_| | '_ | / _ | / _` | | '_| / _` |";
+	gotoXY(50, 8); cout << "|____| |___| |__,_| |__,_| |___| |_|   |_.__/ |___/ |__,_| |_|   |__,_|";
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+	int x = 80, y = 12;
+	string line;
+	ifstream f("rank.txt");
+	if (!f.is_open())
+	{
+		cout << "Unable to open file";
+	}
+	while (!f.eof())
+	{
+		getline(f, line);
+		gotoXY(x, y);
+		cout << line << '\n';
+		y = y + 2;
+	}
+	f.close();
+	while (true)
+	{
+		if (_kbhit())
+		{
+			char
+				m = _getch();
+			switch (m)
+			{
+			case 'b':
+				system("cls");
+				return;
+			}
+		}
+	}
+}
 void CMenu::printFAQs() {
 	int color = rand() % 15 + 1;
 
