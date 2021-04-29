@@ -158,7 +158,7 @@ void CMap::nextLevel() {
 	_level.nextLevel();
 }
 bool CMap::printLevelUp() {
-	int color = rand() % 15 + 1;
+	int color = rand() % 5 + 10;
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
 
 	gotoXY(32, 12); cout << "   _        ___    __   __    ___      _                 _   _      ___   ";
@@ -169,18 +169,18 @@ bool CMap::printLevelUp() {
 	gotoXY(32, 17); cout << "\"`-0-0-\' \"`-0-0-' \"`-0-0-\' \"`-0-0-\' \"`-0-0-\' ./o--000' \"`-0-0-\' \"`-0-0-\'";
 	
 	gotoXY(55, 19); cout << "Do you continue ?" << endl;
-	const string choice[2] = { "<YES>", "<NO>" };
-	int pos = 0, x = 60, y = 22;
+	const string choice[2] = { "<YES>", "<NON>" };
+	int pos = 0, x = 50, y = 22;
 	while (1) {
 		for (int i = 0; i < 2; i++) {
 			if (i == pos) {
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
 				gotoXY(x, y);
 				cout << choice[i];
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
 			}
 			else {
-				gotoXY(x, y + 1);
+				gotoXY(x + 21, y);
 				cout << choice[i];
 			}
 		}
