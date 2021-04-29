@@ -113,7 +113,7 @@ void CMap::init(){
 		int LineNb = (rand() % 5) + 1;
 		road[LineNb] += (rand() % 20) + 9;
 		pos = CPos((LineNb * 4) + 1, road[LineNb]);
-		newObj = new CBird(pos);
+		newObj = _level.randObj(pos);
 		if (!newObj) 
 			break;
 		if (!_lines.PushObj(newObj, LineNb)) {
@@ -133,7 +133,7 @@ void CMap::random() {
 	while (tryCount--) {
 		int LineNb = (rand() % 5) + 1;
 		pos = CPos((LineNb * 4) + 1, 4);
-		newObj = new CBird(pos);
+		newObj = _level.randObj(pos);
 		if (!newObj) break;
 		if (!_lines.PushObj(newObj, LineNb)) {
 			delete newObj;

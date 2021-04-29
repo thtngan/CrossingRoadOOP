@@ -24,6 +24,7 @@
     <ClInclude Include="CConsole.h" />
     <ClInclude Include="CElephant.h" />
     <ClInclude Include="CHelicopter.h" />
+    <ClInclude Include="CLevel.h" />
     <ClInclude Include="CLine.h" />
     <ClInclude Include="CLines.h" />
     <ClInclude Include="CMap.h" />
@@ -40,6 +41,7 @@
     <ClCompile Include="CConsole.cpp" />
     <ClCompile Include="CElephant.cpp" />
     <ClCompile Include="CHelicopter.cpp" />
+    <ClCompile Include="CLevel.cpp" />
     <ClCompile Include="CLine.cpp" />
     <ClCompile Include="CLines.cpp" />
     <ClCompile Include="CMap.cpp" />

@@ -7,7 +7,7 @@
 #include <conio.h>
 #include "CPlayer.h"
 #include "CObject.h"
-#include "CBird.h"
+#include "CLevel.h"
 #include "CLines.h"
 
 
@@ -20,6 +20,7 @@ private:
 	const int _width = 130, _height = 37;
 	//CPlayer _player;
 	CLines _lines;
+	CLevel _level;
 	int t = 0;
 public:
 	CPlayer _player;
