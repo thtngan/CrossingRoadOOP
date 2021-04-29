@@ -7,7 +7,7 @@ class CHelicopter : public CObject
 private:
 	char** _helicopter;
 public:
-	CHelicopter();
+	CHelicopter(CPos pos);
 	~CHelicopter();
 
 	//return sth

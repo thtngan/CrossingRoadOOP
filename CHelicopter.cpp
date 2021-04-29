@@ -1,6 +1,6 @@
 #include "CHelicopter.h"
 
-CHelicopter::CHelicopter() : CObject(){
+CHelicopter::CHelicopter(CPos pos) : CObject(pos){
 	_helicopter = new char* [3];
 	for (int i = 0; i < 3; i++)
 		_helicopter[i] = new char[14];

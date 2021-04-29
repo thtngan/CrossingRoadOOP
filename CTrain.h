@@ -8,6 +8,7 @@ private:
 	char** _train;
 public:
 	CTrain();
+	CTrain(CPos pos);
 	~CTrain();
 
 	//return sth

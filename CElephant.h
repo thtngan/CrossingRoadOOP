@@ -8,7 +8,7 @@ private:
 	char** _elephant;
 
 public:
-	CElephant();
+	CElephant(CPos pos);
 	~CElephant();
 
 	//return sth

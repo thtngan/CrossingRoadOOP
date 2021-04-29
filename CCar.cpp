@@ -1,6 +1,6 @@
 #include "CCar.h"
 
-CCar::CCar() : CObject(){
+CCar::CCar(CPos pos) : CObject(pos){
 	_car = new char* [4];
 	for (int i = 0; i < 4; i++)
 		_car[i] = new char[13];

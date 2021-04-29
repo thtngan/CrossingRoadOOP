@@ -7,7 +7,7 @@ class CCar : public CObject
 private:
 	char** _car;
 public:
-	CCar();
+	CCar(CPos pos);
 	~CCar();
 
 	//return sth
