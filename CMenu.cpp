@@ -133,7 +133,6 @@ void CMenu::menu() {
 					break;
 				case 2: //Rank
 					//Rank
-					cout << "Rank";
 					leaderBoard();
 					input = true;
 					break;
@@ -287,17 +286,20 @@ void CMenu::leaderBoard()
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 	int x = 80, y = 12;
 	string line;
-	ifstream f("rank.txt");
+	ifstream f("C:/Users/Envy/Downloads/NCR/rank.txt");
 	if (!f.is_open())
 	{
-		cout << "Unable to open file";
+		gotoXY(x, y); cout << "Unable to open file";
 	}
-	while (!f.eof())
+	else 
 	{
-		getline(f, line);
-		gotoXY(x, y);
-		cout << line << '\n';
-		y = y + 2;
+		while (!f.eof())
+		{
+			getline(f, line);
+			gotoXY(x, y);
+			cout << line << '\n';
+			y = y + 2;
+		}
 	}
 	f.close();
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);
