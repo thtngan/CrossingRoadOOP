@@ -72,7 +72,6 @@ void CMap::printObject(CObject *obj) {
 		obj->setOutMap();
 }
 void CMap::printInstruct(){
-//	clrscr();
 	gotoXY(0, 0);
 	for (int i = 0; i <= _height + 1; ++i) {
 		cout << "  ";
@@ -123,8 +122,6 @@ void CMap::init(){
 	Sleep(200);
 	_lines.Transfer(0);
 }
-void CMap::printMap() {
-}
 void CMap::random() {
 	srand(time(NULL));
 	CObject* newObj;
@@ -141,7 +138,67 @@ void CMap::random() {
 	}
 	++t;
 	int tmp = _lines.Transfer(t);
-	printMap();
 	Sleep(10);
 }
+void CMap::movePlayer(const char& chr) {
+	delPlayer(_player.getPos(), _player.kind(), _player.getH(), _player.getW());
+	if (chr == 'a' || chr == 'A') _player.moveLeft();
+	else if (chr == 'w' || chr == 'W') _player.moveUp();
+	else if (chr == 'd' || chr == 'D') _player.moveRight();
+	else if (chr == 's' || chr == 'S') _player.moveDown();
+	else return;
+	printPlayer();
+}
+bool CMap::isWin() {
+	if (_player.getPos().getX() == 2)
+		return true;
+	return false;
+}
+void CMap::nextLevel() {
+	_level.nextLevel();
+}
+bool CMap::printLevelUp() {
+	int color = rand() % 15 + 1;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
 
+	gotoXY(32, 12); cout << "   _        ___    __   __    ___      _                 _   _      ___   ";
+	gotoXY(32, 13); cout << "  | |      | __|   \\ \\ / /   | __|    | |        o O O  | | | |    | _ \\  ";
+	gotoXY(32, 14); cout << "  | |__    | _|     \\ V /    | _|     | |__     o       | |_| |    |  _/  ";
+	gotoXY(32, 15); cout << "  |____|   |___|    _\\_/_    |___|    |____|   TS__[O]   \\___/    _|_|_    ";
+	gotoXY(32, 16); cout << "_|\"\"\"\"\"| _|\"\"\"\"\"| _|\"\"\"\"\"| _|\"\"\"\"\"| _|\"\"\"\"\"|  {======| _|\"\"\"\"\"| _|\"\"\"\"\"| ";
+	gotoXY(32, 17); cout << "\"`-0-0-\' \"`-0-0-' \"`-0-0-\' \"`-0-0-\' \"`-0-0-\' ./o--000' \"`-0-0-\' \"`-0-0-\'";
+	
+	gotoXY(55, 19); cout << "Do you continue ?" << endl;
+	const string choice[2] = { "<YES>", "<NO>" };
+	int pos = 0, x = 60, y = 22;
+	while (1) {
+		for (int i = 0; i < 2; i++) {
+			if (i == pos) {
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+				gotoXY(x, y);
+				cout << choice[i];
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+			}
+			else {
+				gotoXY(x, y + 1);
+				cout << choice[i];
+			}
+		}
+
+		switch (_getch()) {
+		case 'w': case 'W':
+			pos--;
+			pos = abs(pos);
+			pos %= 2;
+			break;
+		case 's': case 'S':
+			pos++;
+			pos %= 2;
+			break;
+		case 13:
+			cout << !pos;
+			return !pos;
+		}
+	}
+	return true;
+}

@@ -69,7 +69,7 @@ void CMenu::menu() {
 						//map.move();
 						map.init();
 						Sleep(500);
-						int non_stop = true;
+						bool non_stop = true;
 						char m;
 						bool flag = true;
 						while (non_stop) 
@@ -83,27 +83,19 @@ void CMenu::menu() {
 									fflush(stdin);
 									switch (m)
 									{
-									case 'a':
-										map.delPlayer(map._player.getPos(), map._player.kind(), map._player.getH(), map._player.getW());
-										map._player.moveLeft();
-										map.printPlayer();
+									case 'a': case 'A':
+										map.movePlayer(m);
 										break;
-									case 'w':
-										map.delPlayer(map._player.getPos(), map._player.kind(), map._player.getH(), map._player.getW());
-										map._player.moveUp();
-										map.printPlayer();
+									case 'w': case 'W':
+										map.movePlayer(m);
 										break;
-									case 's':
-										map.delPlayer(map._player.getPos(), map._player.kind(), map._player.getH(), map._player.getW());
-										map._player.moveDown();
-										map.printPlayer();
+									case 's': case 'S':
+										map.movePlayer(m);
 										break;
-									case 'd':
-										map.delPlayer(map._player.getPos(), map._player.kind(), map._player.getH(), map._player.getW());
-										map._player.moveRight();
-										map.printPlayer();
+									case 'd': case 'D':
+										map.movePlayer(m);
 										break;
-									case 'p':
+									case 'p': case 'P':
 										flag = false;
 										gotoXY(50, 30);
 										cout << "PAUSED - Press p to continue";
@@ -117,7 +109,7 @@ void CMenu::menu() {
 									m = _getch();
 									switch (m) 
 									{
-									case 'p':
+									case 'p': case 'P':
 										flag = true;
 										gotoXY(50, 30);
 										cout << "                            ";
@@ -125,8 +117,20 @@ void CMenu::menu() {
 									}
 								}
 							}
+							if(map.isWin()){
+								system("cls");
+								map.printBorders();
+								if (map.printLevelUp()) {
+									map.nextLevel();
+									map.printInstruct();
+									map.init();
+									map.printPlayer();
+								}
+							}
 						}
 					}
+					map.printBorders();
+					cout << "WIN";
 					break;
 				case 1: //Loadgame
 					cout << "Loadgame";
