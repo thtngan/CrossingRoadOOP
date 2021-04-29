@@ -44,6 +44,7 @@ void CMenu::menu() {
 				}
 
 				printTitle();
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
 			}
 			input = false;
 			switch (getch()) {

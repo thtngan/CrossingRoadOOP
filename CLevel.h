@@ -12,6 +12,8 @@ public:
 	CLevel(const int&);
 	~CLevel() = default;
 	CObject* randObj(CPos pos);
+	int getLevel();
+	bool newLevel();
 protected:
 	int _level;
 };

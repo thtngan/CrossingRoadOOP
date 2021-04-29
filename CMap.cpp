@@ -82,16 +82,16 @@ void CMap::printInstruct(){
 		cout << endl;
 	}
 	gotoXY(138, 2); cout << "<Crossing Road Game>";	
-//	gotoXY(125, 3); cout << "LV. " << level.getLevel() << endl;
-	gotoXY(138, 5); cout << "CONTROL MANUAL" << endl;
-	gotoXY(138, 6); cout << "[" << 'W' << "]: UP" << endl;
-	gotoXY(138, 7); cout << "[" << 'S' << "]: DOWN" << endl;
-	gotoXY(138, 8); cout << "[" << 'A' << "]: LEFT" << endl;
-	gotoXY(138, 9); cout << "[" << 'D' << "]: RIGHT" << endl;
-	gotoXY(138, 11); cout << "COMMANDS" << endl;
-	gotoXY(138, 12); cout << "[ L ]: Save game" << endl;
-	gotoXY(138, 13); cout << "[ T ]: Load game" << endl;
-	gotoXY(138, 14); cout << "[ P ]: Pause game/Menu" << endl;
+	gotoXY(138, 4); cout << "LV. " << _level.getLevel() << endl;
+	gotoXY(138, 6); cout << "CONTROL MANUAL" << endl;
+	gotoXY(138, 7); cout << "[" << 'W' << "]: UP" << endl;
+	gotoXY(138, 8); cout << "[" << 'S' << "]: DOWN" << endl;
+	gotoXY(138, 9); cout << "[" << 'A' << "]: LEFT" << endl;
+	gotoXY(138, 10); cout << "[" << 'D' << "]: RIGHT" << endl;
+	gotoXY(138, 12); cout << "COMMANDS" << endl;
+	gotoXY(138, 13); cout << "[ L ]: Save game" << endl;
+	gotoXY(138, 14); cout << "[ T ]: Load game" << endl;
+	gotoXY(138, 15); cout << "[ P ]: Pause game/Menu" << endl;
 	printPlayer();
 }
 void CMap::init(){

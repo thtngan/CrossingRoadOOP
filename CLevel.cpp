@@ -1,5 +1,7 @@
 #include "CLevel.h"
 
+#define MAXSPEED 120 
+#define MINSPEED 50
 CLevel::CLevel() {
 	_level = 1;
 }
@@ -28,4 +30,7 @@ CObject* CLevel::randObj(CPos pos) {
 		}
 	}
 	return newObj;
+}
+int CLevel::getLevel() {
+	return _level;
 }
