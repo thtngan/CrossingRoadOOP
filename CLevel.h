@@ -13,7 +13,9 @@ public:
 	~CLevel() = default;
 	CObject* randObj(CPos pos);
 	int getLevel();
-	bool newLevel();
+	bool newLevel(const int&);
+	bool nextLevel();
+	int getSpeed();
 protected:
 	int _level;
 };

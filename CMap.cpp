@@ -101,10 +101,10 @@ void CMap::init(){
 	new(&_lines) CLines();
 	int road[7] = { 0 };
 	for (int i = 0; i < 7; ++i) {
-		int speed = rand() % 100;
+		int speed = 5;//_level.getSpeed();
 		bool trafficLight = rand() % 2;
 		bool direction = rand() % 2;
-		_lines.PushLine(new CLine(speed, direction, trafficLight, (i * 4) + 1));
+		_lines.PushLine(new CLine(speed, direction, trafficLight, (i * 5) + 1));
 	}
 	CObject * newObj;
 	CPos pos;
@@ -112,7 +112,7 @@ void CMap::init(){
 	while (tryCount--) { 
 		int LineNb = (rand() % 5) + 1;
 		road[LineNb] += (rand() % 20) + 9;
-		pos = CPos((LineNb * 4) + 1, road[LineNb]);
+		pos = CPos((LineNb * 5) + 1, road[LineNb]);
 		newObj = _level.randObj(pos);
 		if (!newObj) 
 			break;
@@ -132,7 +132,7 @@ void CMap::random() {
 	int tryCount = 10000;
 	while (tryCount--) {
 		int LineNb = (rand() % 5) + 1;
-		pos = CPos((LineNb * 4) + 1, 4);
+		pos = CPos((LineNb * 5) + 1, 4);
 		newObj = _level.randObj(pos);
 		if (!newObj) break;
 		if (!_lines.PushObj(newObj, LineNb)) {
