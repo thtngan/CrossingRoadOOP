@@ -4,6 +4,7 @@
 #define MINSPEED 30
 CLevel::CLevel() {
 	_level = 1;
+	_line = 4;
 }
 CLevel::CLevel(const int& level) {
 	_level = level;
@@ -40,6 +41,8 @@ bool CLevel::newLevel(const int& level) {
 }
 bool CLevel::nextLevel() {
 	_level++;
+	if (_level % 3 == 0)
+		_line++;
 	return true;
 }
 int CLevel::getSpeed() {
@@ -48,4 +51,7 @@ int CLevel::getSpeed() {
 	if (speed > MAXSPEED)
 		speed = MAXSPEED;
 	return speed;
+}
+int CLevel::getLine() {
+	return _line;
 }

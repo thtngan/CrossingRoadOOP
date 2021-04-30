@@ -34,10 +34,12 @@ public:
 	void printObject(CObject *); //draw another object
 	void printInstruct();
 	bool delPlayer(CPos pos, char** kind, int h, int w); //height and width of thing to del
+	void deletePlayer();
 	void init();
 	void random();
 	void movePlayer(const char&);
 	bool isWin();
 	void nextLevel();
 	bool printLevelUp();
+
 };

@@ -119,10 +119,10 @@ void CMenu::menu() {
 							}
 							if(map.isWin()){
 								system("cls");
-								map.printBorders();
 								if (map.printLevelUp()) {
 									map.nextLevel();
 									map.printInstruct();
+									map.deletePlayer();
 									map.init();
 									map.printPlayer();
 								}

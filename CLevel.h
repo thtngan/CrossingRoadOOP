@@ -16,7 +16,9 @@ public:
 	bool newLevel(const int&);
 	bool nextLevel();
 	int getSpeed();
+	int getLine();
 protected:
 	int _level;
+	int _line;
 };
 

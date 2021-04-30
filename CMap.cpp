@@ -60,7 +60,9 @@ bool CMap::delPlayer(CPos pos, char** kind, int h, int w)
 	}
 	return true;
 }
-
+void CMap::deletePlayer() {
+	delPlayer(_player.getPos(), _player.kind(), _player.getH(), _player.getW());
+}
 void CMap::printObject(CObject *obj) {
 	bool print = Print(
 		obj->getPos(),
@@ -98,8 +100,11 @@ void CMap::init(){
 	new(&_player) CPlayer();
 	_lines.~CLines();
 	new(&_lines) CLines();
-	int road[7] = { 0 };
-	for (int i = 0; i < 7; ++i) {
+	int n = _level.getLine();
+	int* road = new int[n];
+	//int road[n] = { 0 };
+	for (int i = 0; i < n; ++i) {
+		road[i] = 0;
 		int speed = 5;//_level.getSpeed();
 		bool trafficLight = rand() % 2;
 		bool direction = rand() % 2;
@@ -109,7 +114,7 @@ void CMap::init(){
 	CPos pos;
 	int tryCount = 10000;
 	while (tryCount--) { 
-		int LineNb = (rand() % 5) + 1;
+		int LineNb = (rand() % (n - 1)) + 1;
 		road[LineNb] += (rand() % 20) + 9;
 		pos = CPos((LineNb * 5) + 1, road[LineNb]);
 		newObj = _level.randObj(pos);
@@ -127,8 +132,9 @@ void CMap::random() {
 	CObject* newObj;
 	CPos pos;
 	int tryCount = 10000;
+	int n = _level.getLine();
 	while (tryCount--) {
-		int LineNb = (rand() % 5) + 1;
+		int LineNb = (rand() % (n - 1)) + 1;
 		pos = CPos((LineNb * 5) + 1, 4);
 		newObj = _level.randObj(pos);
 		if (!newObj) break;
@@ -158,7 +164,10 @@ void CMap::nextLevel() {
 	_level.nextLevel();
 }
 bool CMap::printLevelUp() {
-	int color = rand() % 5 + 10;
+	system("cls");
+	printInstruct();
+	deletePlayer();
+	int color = rand() % 8 + 7;
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
 
 	gotoXY(32, 12); cout << "   _        ___    __   __    ___      _                 _   _      ___   ";
@@ -174,7 +183,7 @@ bool CMap::printLevelUp() {
 	while (1) {
 		for (int i = 0; i < 2; i++) {
 			if (i == pos) {
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 63);
 				gotoXY(x, y);
 				cout << choice[i];
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
@@ -186,12 +195,12 @@ bool CMap::printLevelUp() {
 		}
 
 		switch (_getch()) {
-		case 'w': case 'W':
+		case 'a': case 'A':
 			pos--;
 			pos = abs(pos);
 			pos %= 2;
 			break;
-		case 's': case 'S':
+		case 'd': case 'D':
 			pos++;
 			pos %= 2;
 			break;
