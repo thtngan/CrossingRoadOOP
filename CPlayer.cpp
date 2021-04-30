@@ -62,7 +62,7 @@ void CPlayer::Draw(const int type) {
 }
 
 CPlayer::CPlayer() {
-	_pos.setPos(35, 60); //position default
+	_pos.setPos(40, 60); //position default
 	_type = ConstantVar::_typePlayer;
 	Draw(_type);		
 }
@@ -103,18 +103,18 @@ void CPlayer::moveUp()
 void CPlayer::moveDown()
 {
 	_pos.setPos((_pos.getX() + 2), _pos.getY());
-	if (_pos.getX() > 35)
+	if (_pos.getX() > 40)
 	{
-		_pos.setPos(35, _pos.getY());
+		_pos.setPos(40, _pos.getY());
 	}
 	//cout << "moved down: " << _pos.getX() << " " << _pos.getY() << endl;
 }
 void CPlayer::moveRight()
 {
 	_pos.setPos(_pos.getX(), (_pos.getY() + 3));
-	if (_pos.getY() > 116)
+	if (_pos.getY() > 126)
 	{
-		_pos.setPos(_pos.getX(), 116);
+		_pos.setPos(_pos.getX(), 126);
 	}
 	//cout << "moved right: " << _pos.getX() << " " << _pos.getY() << endl;
 }
