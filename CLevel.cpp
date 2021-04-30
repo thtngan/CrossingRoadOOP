@@ -41,7 +41,7 @@ bool CLevel::newLevel(const int& level) {
 }
 bool CLevel::nextLevel() {
 	_level++;
-	if (_level % 3 == 0)
+	if (_level % 3 == 0 && _line < 9)
 		_line++;
 	return true;
 }

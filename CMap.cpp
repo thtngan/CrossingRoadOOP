@@ -102,7 +102,6 @@ void CMap::init(){
 	new(&_lines) CLines();
 	int n = _level.getLine();
 	int* road = new int[n];
-	//int road[n] = { 0 };
 	for (int i = 0; i < n; ++i) {
 		road[i] = 0;
 		int speed = 5;//_level.getSpeed();
