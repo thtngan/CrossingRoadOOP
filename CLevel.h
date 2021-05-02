@@ -9,16 +9,18 @@ class CLevel
 {
 public:
 	CLevel();
-	CLevel(const int&);
+	CLevel(const int&, const int&);
 	~CLevel() = default;
 	CObject* randObj(CPos pos);
 	int getLevel();
 	bool newLevel(const int&);
 	bool nextLevel();
-	int getSpeed();
 	int getLine();
+	void init();
+	void reNbObj(int nb);
+	int getMinSpeed();
+	int getMaxSpeed();
 protected:
-	int _level;
-	int _line;
+	int _level, _line, _nbObj, _maxObj, _minSpeed, _maxSpeed, _speed;
 };
 

@@ -51,6 +51,6 @@ public:
 
 	//Exit
 	void printGB();
-
+	bool newGame();
 };
 

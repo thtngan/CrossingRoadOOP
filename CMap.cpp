@@ -104,10 +104,10 @@ void CMap::init(){
 	int* road = new int[n];
 	for (int i = 0; i < n; ++i) {
 		road[i] = 0;
-		int speed = 5;//_level.getSpeed();
+		int speed = rand() % (_level.getMinSpeed() - _level.getMaxSpeed() + 1) + _level.getMaxSpeed();
 		bool trafficLight = rand() % 2;
 		bool direction = rand() % 2;
-		_lines.PushLine(new CLine(speed, direction, trafficLight, (i * 5) + 1));
+		_lines.PushLine(new CLine(speed, direction, trafficLight, i * 4));
 	}
 	CObject * newObj;
 	CPos pos;
@@ -115,11 +115,12 @@ void CMap::init(){
 	while (tryCount--) { 
 		int LineNb = (rand() % (n - 1)) + 1;
 		road[LineNb] += (rand() % 20) + 9;
-		pos = CPos((LineNb * 5) + 1, road[LineNb]);
+		pos = CPos(LineNb * 4, road[LineNb]);
 		newObj = _level.randObj(pos);
 		if (!newObj) 
 			break;
 		if (!_lines.PushObj(newObj, LineNb)) {
+			_level.reNbObj(1);
 			delete newObj;
 		};
 	}
@@ -134,15 +135,17 @@ void CMap::random() {
 	int n = _level.getLine();
 	while (tryCount--) {
 		int LineNb = (rand() % (n - 1)) + 1;
-		pos = CPos((LineNb * 5) + 1, 4);
+		pos = CPos(LineNb * 4, 4);
 		newObj = _level.randObj(pos);
 		if (!newObj) break;
 		if (!_lines.PushObj(newObj, LineNb)) {
+			_level.reNbObj(1);
 			delete newObj;
 		};
 	}
 	++t;
 	int tmp = _lines.Transfer(t);
+	_level.reNbObj(tmp);
 	Sleep(10);
 }
 void CMap::movePlayer(const char& chr) {
@@ -204,9 +207,7 @@ bool CMap::printLevelUp() {
 			pos %= 2;
 			break;
 		case 13:
-			cout << !pos;
 			return !pos;
 		}
 	}
-	return true;
 }

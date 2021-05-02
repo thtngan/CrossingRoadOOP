@@ -63,74 +63,14 @@ void CMenu::menu() {
 				switch (pos) {
 				case 0: //New game
 					while (1) {
-						//loading(); 
-						map.printBorders();
-						map.printInstruct();
-						//map.move();
-						map.init();
-						Sleep(500);
-						bool non_stop = true;
-						char m;
-						bool flag = true;
-						while (non_stop) 
-						{
-							if (flag) 
-							{
-								map.random();
-								if (_kbhit())
-								{
-									m = _getch();
-									fflush(stdin);
-									switch (m)
-									{
-									case 'a': case 'A':
-										map.movePlayer(m);
-										break;
-									case 'w': case 'W':
-										map.movePlayer(m);
-										break;
-									case 's': case 'S':
-										map.movePlayer(m);
-										break;
-									case 'd': case 'D':
-										map.movePlayer(m);
-										break;
-									case 'p': case 'P':
-										flag = false;
-										gotoXY(50, 30);
-										cout << "PAUSED - Press p to continue";
-									}
-								}
-							}
-							else
-							{
-								if (_kbhit())
-								{
-									m = _getch();
-									switch (m) 
-									{
-									case 'p': case 'P':
-										flag = true;
-										gotoXY(50, 30);
-										cout << "                            ";
-										break;
-									}
-								}
-							}
-							if(map.isWin()){
-								system("cls");
-								if (map.printLevelUp()) {
-									map.nextLevel();
-									map.printInstruct();
-									map.deletePlayer();
-									map.init();
-									map.printPlayer();
-								}
-							}
+						loading(); 
+						if (newGame()) {
+							Sleep(500);
+							system("cls");
+							input = true;
+							break;
 						}
 					}
-					map.printBorders();
-					cout << "WIN";
 					break;
 				case 1: //Loadgame
 					cout << "Loadgame";
@@ -175,7 +115,75 @@ void CMenu::loading() {
 	}
 
 }
-
+bool CMenu::newGame() {
+	map.~CMap();
+	new(&map) CMap();
+	map.printBorders();
+	map.printInstruct();
+	map.init();
+	Sleep(500);
+	bool non_stop = true;
+	char m;
+	bool flag = true;
+	while (non_stop)
+	{
+		if (flag)
+		{
+			map.random();
+			if (_kbhit())
+			{
+				m = _getch();
+				fflush(stdin);
+				switch (m)
+				{
+				case 'a': case 'A':
+					map.movePlayer(m);
+					break;
+				case 'w': case 'W':
+					map.movePlayer(m);
+					break;
+				case 's': case 'S':
+					map.movePlayer(m);
+					break;
+				case 'd': case 'D':
+					map.movePlayer(m);
+					break;
+				case 'p': case 'P':
+					flag = false;
+					gotoXY(50, 30);
+					cout << "PAUSED - Press p to continue";
+				}
+			}
+		}
+		else
+		{
+			if (_kbhit())
+			{
+				m = _getch();
+				switch (m)
+				{
+				case 'p': case 'P':
+					flag = true;
+					gotoXY(50, 30);
+					cout << "                            ";
+					break;
+				}
+			}
+		}
+		if (map.isWin()) {
+			if (map.printLevelUp()) {
+				map.nextLevel();
+				map.printInstruct();
+				map.deletePlayer();
+				map.init();
+				map.printPlayer();
+			}
+			else
+				return true;
+		}
+	}
+	return false;
+}
 //Settings
 void CMenu::settings() {
 	ClearScreen();

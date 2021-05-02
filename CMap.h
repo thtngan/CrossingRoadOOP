@@ -19,7 +19,7 @@ class CMap
 {
 private:
 	char _map[200][200];
-	const int _width = 130, _height = 42;
+	const int _width = 130, _height = 44;
 	CPlayer _player;
 	CLines _lines;
 	CLevel _level;
