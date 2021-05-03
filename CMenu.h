@@ -25,7 +25,7 @@ private:
 	CLine line;
 
 	//int typePlayer; //0: (O.O), 1: (^O^), 2: (>_<)
-	bool isMusic; //true: ON, false: OFF
+	//bool isMusic; //true: ON, false: OFF
 
 public:
 	CMenu() = default;

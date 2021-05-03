@@ -4,6 +4,14 @@
 #include "CPos.h"
 #include "ConstantVar.h"
 
+#include <iostream>
+#include <Windows.h>
+#include <string>
+
+#pragma comment(lib, "winmm.lib")
+
+
+
 class CPlayer
 {
 private:
@@ -30,6 +38,8 @@ public:
 	void moveDown();
 	void moveRight();
 	void moveLeft();
+
+	void soundPlayer();
 };
 
 #endif

@@ -11,6 +11,7 @@
 using namespace std;
 
 int ConstantVar::_typePlayer = 0;
+bool ConstantVar::_isMusic = true;
 
 int main() {
 	srand(time(NULL));

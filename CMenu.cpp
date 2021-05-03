@@ -128,6 +128,7 @@ void CMenu::loading() {
 
 }
 bool CMenu::newGame(const int& t) {
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 	map.~CMap();
 	new(&map) CMap();
 	map.loadLevel(t);
@@ -311,7 +312,7 @@ void CMenu::settings() {
 	const char *choice[4] = { "Music:", "Player:", "FAQs", "Back"};
 	string currentChoice[4] = { "ON", "(0.0)", "", "" };
 
-	if (isMusic) {
+	if (ConstantVar::_isMusic) {
 		currentChoice[0] = "ON";
 	}
 	else {
@@ -364,8 +365,8 @@ void CMenu::settings() {
 			case 13:
 				switch (pos) {
 				case 0: //Music
-					isMusic = !isMusic;
-					if (isMusic) {
+					ConstantVar::_isMusic = !ConstantVar::_isMusic;
+					if (ConstantVar::_isMusic) {
 						currentChoice[0] = "ON ";
 					}
 					else {

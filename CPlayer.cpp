@@ -93,6 +93,7 @@ void CPlayer::xuatPos()
 }
 void CPlayer::moveUp()
 {
+	soundPlayer();
 	_pos.setPos((_pos.getX() - 2), _pos.getY());
 	if (_pos.getX() < 2)
 	{
@@ -102,6 +103,7 @@ void CPlayer::moveUp()
 }
 void CPlayer::moveDown()
 {
+	soundPlayer();
 	_pos.setPos((_pos.getX() + 2), _pos.getY());
 	if (_pos.getX() > 40)
 	{
@@ -111,6 +113,7 @@ void CPlayer::moveDown()
 }
 void CPlayer::moveRight()
 {
+	soundPlayer();
 	_pos.setPos(_pos.getX(), (_pos.getY() + 3));
 	if (_pos.getY() > 126)
 	{
@@ -120,6 +123,7 @@ void CPlayer::moveRight()
 }
 void CPlayer::moveLeft()
 {
+	soundPlayer();
 	_pos.setPos(_pos.getX(), (_pos.getY() - 3));
 	if (_pos.getY() < 4)
 	{
@@ -127,3 +131,8 @@ void CPlayer::moveLeft()
 	}
 }
 
+void CPlayer::soundPlayer() {
+	if (ConstantVar::_isMusic) {
+		PlaySoundW(L"PlayerMove.wav", NULL, SND_FILENAME | SND_ASYNC);
+	}
+}
