@@ -8,9 +8,16 @@ CLevel::CLevel() {
 	_speed = 50;
 	init();
 }
-CLevel::CLevel(const int& level, const int& nbObj) {
+CLevel::CLevel(const int& level) {
 	_level = level;
-	_nbObj = nbObj;
+	_nbObj = 0;
+	if ((4 + (_level / 3)) <= 10)
+		_line = (4 + (_level / 3));
+	else _line = 10;
+	_maxObj = 5 + _level*2;
+	if ((50 - _level * 5) < 5)
+		_speed = 5;
+	else _speed = (50 - _level * 5);
 	init();
 }
 void CLevel::init() {

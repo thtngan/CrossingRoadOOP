@@ -9,7 +9,7 @@ class CLevel
 {
 public:
 	CLevel();
-	CLevel(const int&, const int&);
+	CLevel(const int&);
 	~CLevel() = default;
 	CObject* randObj(CPos pos);
 	int getLevel();

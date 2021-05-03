@@ -1,4 +1,4 @@
-#define _CRT_NONSTDC_NO_WARNINGS
+﻿#define _CRT_NONSTDC_NO_WARNINGS
 #define _CRT_SECURE_NO_WARNINGS
 
 #include "CMenu.h"
@@ -24,7 +24,7 @@ void CMenu::menu() {
 	int x = 50, y = 10, pos = 0;
 	
 	ShowConsoleCursor(false);
-
+	int cur;
 	while (true) {
 		input = true;
 		while (true) {
@@ -64,7 +64,7 @@ void CMenu::menu() {
 				case 0: //New game
 					while (1) {
 						loading(); 
-						if (newGame()) {
+						if (newGame(1)) {
 							Sleep(500);
 							system("cls");
 							input = true;
@@ -73,7 +73,19 @@ void CMenu::menu() {
 					}
 					break;
 				case 1: //Loadgame
-					cout << "Loadgame";
+					cur = loadGame();
+					if (cur == 0) {
+						Sleep(500);
+						system("cls");
+						input = true;
+					}
+					else
+						if (newGame(cur)) {
+							Sleep(500);
+								system("cls");
+								input = true;
+								break;
+						}
 					break;
 				case 2: //Rank
 					//Rank
@@ -115,16 +127,17 @@ void CMenu::loading() {
 	}
 
 }
-bool CMenu::newGame() {
+bool CMenu::newGame(const int& t) {
 	map.~CMap();
 	new(&map) CMap();
+	map.loadLevel(t);
 	map.printBorders();
 	map.printInstruct();
 	map.init();
 	Sleep(500);
 	bool non_stop = true;
 	char m;
-	bool flag = true;
+	bool flag = true, flagMenu = true;
 	while (non_stop)
 	{
 		if (flag)
@@ -151,21 +164,32 @@ bool CMenu::newGame() {
 				case 'p': case 'P':
 					flag = false;
 					gotoXY(50, 30);
-					cout << "PAUSED - Press p to continue";
+					cout << "PAUSED - Press double p to continue";
+					while (flagMenu) {
+						int status = pauseMenu();
+						if (status == 0)
+							return true;
+						else if (status == 1) {
+							gotoXY(138, 25); cout << "Saved...";
+						}
+						else
+							flagMenu = false;
+					}
 				}
 			}
 		}
 		else
 		{
 			if (_kbhit())
-			{
+			{	
+				
 				m = _getch();
 				switch (m)
 				{
 				case 'p': case 'P':
 					flag = true;
-					gotoXY(50, 30);
-					cout << "                            ";
+					flagMenu = true;
+					clsPauseMenu();
 					break;
 				}
 			}
@@ -183,6 +207,102 @@ bool CMenu::newGame() {
 		}
 	}
 	return false;
+}
+//LoadGame
+vector<int> CMenu::readFile(const string& name) {
+	ifstream ifs;
+	ifs.open(name.c_str());
+	vector<int> list;
+	if (!ifs.is_open())
+		return list;	
+	int temp;
+	while (!ifs.eof()) {
+		ifs >> temp;
+		list.push_back(temp);
+	}
+	ifs.close();
+	return list;
+}
+void CMenu::writeFile(const string& name, vector<int> list) {
+	ofstream ofs;
+	ofs.open(name.c_str());
+	if (!ofs.is_open())
+		return;
+	for(int i = 0; i < list.size() - 1; ++i)
+		ofs << list[i] << " ";
+	ofs << list[list.size() - 1];
+	ofs.close();
+}
+int CMenu::loadGame() {
+	ClearScreen();
+	string name = "test.txt";
+	vector<int> list = readFile(name);
+	if (list.empty()) {
+		gotoXY(30, 15);
+		cout << "Nothing to load";
+		Sleep(1000);
+		return false;
+	}
+	gotoXY(10, 2);	cout << " .----------------.  .----------------.  .----------------.  .----------------.   .----------------.  .----------------.  .----------------.  .----------------. ";
+	gotoXY(10, 3);	cout << "| .--------------. || .--------------. || .--------------. || .--------------. | | .--------------. || .--------------. || .--------------. || .--------------. |";
+	gotoXY(10, 4);	cout << "| |   _____      | || |     ____     | || |      __      | || |  ________    | | | |    ______    | || |      __      | || | ____    ____ | || |  _________   | |";
+	gotoXY(10, 5);	cout << "| |  |_   _|     | || |   .'    `.   | || |     /  \\     | || | |_   ___ `.  | | | |  .' ___  |   | || |     /  \\     | || ||_   \\  /   _|| || | |_   ___  |  | |";
+	gotoXY(10, 6);	cout << "| |    | |       | || |  /  .--.  \\  | || |    / /\\ \\    | || |   | |   `. \\ | | | | / .'   \\_|   | || |    / /\\ \\    | || |  |   \\/   |  | || |   | |_  \\_|  | |";
+	gotoXY(10, 7);	cout << "| |    | |   _   | || |  | |    | |  | || |   / ____ \\   | || |   | |    | | | | | | | |    ____  | || |   / ____ \\   | || |  | |\\  /| |  | || |   |  _|  _   | |";
+	gotoXY(10, 8);	cout << "| |   _| |__/ |  | || |  \\  `--'  /  | || | _/ /    \\ \\_ | || |  _| |___.' / | | | | \\ `.___]  _| | || | _/ /    \\ \\_ | || | _| |_\\/_| |_ | || |  _| |___/ |  | |";
+	gotoXY(10, 9);	cout << "| |  |________|  | || |   `.____.'   | || ||____|  |____|| || | |________.'  | | | |  `._____.'   | || ||____|  |____|| || ||_____||_____|| || | |_________|  | |";
+	gotoXY(10, 10); cout << "| |              | || |              | || |              | || |              | | | |              | || |              | || |              | || |              | |";
+	gotoXY(10, 11); cout << "| '--------------' || '--------------' || '--------------' || '--------------' | | '--------------' || '--------------' || '--------------' || '--------------' |";
+	gotoXY(10, 12); cout << " '----------------'  '----------------'  '----------------'  '----------------'   '----------------'  '----------------'  '----------------'  '----------------' ";
+	int cur = 0;
+	for (int i = 0; i < (int)list.size(); ++i) {
+		if (i == cur) {
+			gotoXY(33, 16 + i);
+			cout << (char)16;
+		}
+		gotoXY(35, 16 + i);
+		cout << "Level " << list[i] << endl;
+	}
+
+	gotoXY(35, 16 + list.size() + 3);	cout << "Press ESC to escape ...";
+	while (true) {
+		if (kbhit())
+		{
+			char key = getch();
+			if (key == 'w' || key == 'W')
+			{
+				gotoXY(33, 16 + cur);
+				cout << "  Level " << list[cur];
+				cur--;
+				cur = (cur + list.size()) % list.size();
+				gotoXY(33, 16 + cur);
+				cout << (char)16 << " Level " << list[cur];
+			}
+			if (key == 's' || key == 'S')
+			{
+				gotoXY(33, 16 + cur);
+				cout << "  Level " << list[cur];
+				cur++;
+				cur = (cur + list.size()) % list.size();
+				gotoXY(33, 16 + cur);
+				cout << (char)16 << " Level " << list[cur];
+			}
+			if (key == 13)
+			{
+				int t = list[cur];
+				list.erase(list.begin() + cur);
+				writeFile(name, list);
+				ClearScreen();
+				return t;
+			}
+			if (key == 27)
+			{
+				ClearScreen();
+				return 0;
+			}
+		}
+		Sleep(200);
+	}
 }
 //Settings
 void CMenu::settings() {
@@ -378,4 +498,59 @@ void CMenu::printGB() {
 			cout << train.kind()[3][j];
 	}
 
+}
+//Pause Menu
+void CMenu::saveGame(const int& t) {
+	ofstream ofs;
+	ofs.open("test.txt", ios::app);
+	ofs << " " << t;
+	ofs.close();
+}
+int CMenu::pauseMenu() {
+	const string choice[2] = { "Save Game", "Quit" };
+	gotoXY(138, 20); cout << "PAUSE MENU" << endl;
+	int x = 138, y = 21, pos = 0;
+	//Print list of menu
+	while (true) {
+		for (int i = 0; i < 2; i++) {
+			gotoXY(x, y + i);
+			if (i == pos)
+			{
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+			}
+			else
+			{
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+			}
+			cout << choice[i] << endl;
+		}
+		switch (getch()) {
+		case 'w': case 'W':
+			pos--;
+			pos = (pos + 2) % 2;
+			break;
+		case 's': case 'S':
+			pos++;
+			pos = (pos + 2) % 2;
+			break;
+		case 13:
+			if (pos == 0) { // Save Game
+				saveGame(map.getLevel());
+				return 1;
+			}
+			else { // Quit
+				return 0;
+			}
+			break;
+		case 'p' : case 'P':
+			return -1;
+		}
+	}
+}
+void CMenu::clsPauseMenu() {
+	gotoXY(50, 30);  cout << "                                   ";
+	gotoXY(138, 20); cout << "                      ";
+	gotoXY(138, 21); cout << "                      ";
+	gotoXY(138, 22); cout << "                      ";
+	gotoXY(138, 25); cout << "                      ";
 }

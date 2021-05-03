@@ -36,9 +36,12 @@ public:
 
 	//New game
 	void loading();
-
+	bool newGame(const int&);
 
 	//Load game
+	int loadGame();
+	vector<int> readFile(const string&);
+	void writeFile(const string&, vector<int> list);
 
 	//Rank
 	void leaderBoard();
@@ -46,11 +49,14 @@ public:
 	void settings();
 
 	void FAQs();
-
 	void printFAQs();
 
 	//Exit
 	void printGB();
-	bool newGame();
+	
+	//Pause
+	void saveGame(const int&);
+	int pauseMenu();
+	void clsPauseMenu();
 };
 

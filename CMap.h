@@ -41,5 +41,6 @@ public:
 	bool isWin();
 	void nextLevel();
 	bool printLevelUp();
-
+	void loadLevel(const int&);
+	int getLevel();
 };

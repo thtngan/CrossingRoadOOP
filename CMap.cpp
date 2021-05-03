@@ -165,6 +165,13 @@ bool CMap::isWin() {
 void CMap::nextLevel() {
 	_level.nextLevel();
 }
+int CMap::getLevel() {
+	return _level.getLevel();
+}
+void CMap::loadLevel(const int& level) {
+	_level.~CLevel();
+	new(&_level) CLevel(level);
+}
 bool CMap::printLevelUp() {
 	system("cls");
 	printInstruct();
