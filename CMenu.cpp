@@ -22,7 +22,11 @@ void CMenu::menu() {
 	const string choice[5] = { "New Game", "Load Game", "Rank", "Settings", "Exit" };
 	bool input = true;
 	int x = 50, y = 10, pos = 0;
-	
+
+	if (ConstantVar::_isMusic) {
+		PlaySoundW(L"Intro.wav", NULL, SND_FILENAME | SND_ASYNC);
+	}
+
 	ShowConsoleCursor(false);
 	int cur;
 	while (true) {
@@ -111,6 +115,9 @@ void CMenu::menu() {
 //New game
 void CMenu::loading() {
 	ClearScreen();
+	if (ConstantVar::_isMusic) {
+		PlaySoundW(L"Loading.wav", NULL, SND_FILENAME | SND_ASYNC);
+	}
 	printTitle();
 
 	gotoXY(40, 20);
