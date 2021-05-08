@@ -11,6 +11,7 @@
 #include "CObject.h"
 #include "CLevel.h"
 #include "CLines.h"
+#include "ConstantVar.h"
 #include <fstream>
 #include <vector>
 #include <algorithm>
@@ -48,4 +49,5 @@ public:
 	int getLevel();
 	bool collision();
 	void writeToRank();
+	void soundLevelUp();
 };

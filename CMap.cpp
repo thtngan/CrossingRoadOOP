@@ -172,12 +172,20 @@ void CMap::loadLevel(const int& level) {
 	_level.~CLevel();
 	new(&_level) CLevel(level);
 }
+
+void CMap::soundLevelUp() {
+	if (ConstantVar::_isMusic) {
+		PlaySoundW(L"M_LevelUp.wav", NULL, SND_APPLICATION);
+	}
+}
+
 bool CMap::printLevelUp() {
 	system("cls");
 	printInstruct();
 	deletePlayer();
 	int color = rand() % 8 + 7;
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+
 
 	gotoXY(32, 12); cout << "   _        ___    __   __    ___      _                 _   _      ___   ";
 	gotoXY(32, 13); cout << "  | |      | __|   \\ \\ / /   | __|    | |        o O O  | | | |    | _ \\  ";
@@ -187,7 +195,8 @@ bool CMap::printLevelUp() {
 	gotoXY(32, 17); cout << "\"`-0-0-\' \"`-0-0-' \"`-0-0-\' \"`-0-0-\' \"`-0-0-\' ./o--000' \"`-0-0-\' \"`-0-0-\'";
 	
 	gotoXY(55, 19); cout << "Do you continue ?" << endl;
-	const string choice[2] = { "<YES>", "<NON>" };
+	const string choice[2] = { "YES", "NO " };
+	soundLevelUp();
 	int pos = 0, x = 50, y = 22;
 	while (1) {
 		for (int i = 0; i < 2; i++) {
@@ -225,10 +234,14 @@ bool CMap::collision()
 	vector <CObject*> List = _lines.listObj();
 	for (int i = 0; i < (int)List.size(); ++i)
 	{
+
 		if (_player.crash(List[i]->getPos(), List[i]->getW(), List[i]->getH()))
 		{
+
 			a = true;
 			system("cls");
+
+
 			gotoXY(50, 10); cout << "     _.-^^---....,,--    ";
 			gotoXY(50, 11); cout << " _--                 --_";
 			gotoXY(50, 12); cout << "<                        >)";
@@ -247,6 +260,12 @@ bool CMap::collision()
 			gotoXY(40, 27); cout << "  | |____ | |  | (_| ||__ || | | || __/| (_ | |";
 			gotoXY(40, 28); cout << "   \\_____||_|   \\__,_||___/|_| |_|\\___| \\__,|_|";
 			gotoXY(48, 38); cout << "   Press-Any-Key-To-Proceed";
+
+			if (ConstantVar::_isMusic) {
+				PlaySoundW(L"M_Lose.wav", NULL, SND_APPLICATION);
+			}
+
+
 			bool t = true;
 			while (t)
 			{

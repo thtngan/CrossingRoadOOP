@@ -7,7 +7,8 @@
 #include <iostream>
 #include <Windows.h>
 #include <string>
-
+#include <conio.h>
+#include <windows.h>
 #pragma comment(lib, "winmm.lib")
 
 

@@ -152,13 +152,21 @@ bool CPlayer::crash(CPos pos, int w, int h)
 			return false;
 		if (this->getY() >= pos.getY() * 2 + w)
 			return false;
-		else
+		else {
+			if (ConstantVar::_isMusic) {
+				PlaySoundW(L"M_Crash.wav", NULL, SND_APPLICATION);
+			}
 			return true;
+
+
+		}
 	}
 
 }
 void CPlayer::soundPlayer() {
 	if (ConstantVar::_isMusic) {
-		PlaySoundW(L"PlayerMove.wav", NULL, SND_FILENAME | SND_ASYNC);
+		PlaySoundW(L"M_PlayerMove.wav", NULL, SND_FILENAME | SND_ASYNC);
 	}
 }
+
+

@@ -1,5 +1,0 @@
-Player: can change face
-
-Object: (bird not moving)
-+ Animal: bird, elephant
-+ Vehicle: train, helicopter, car

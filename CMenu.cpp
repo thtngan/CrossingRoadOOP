@@ -24,7 +24,7 @@ void CMenu::menu() {
 	int x = 50, y = 10, pos = 0;
 
 	if (ConstantVar::_isMusic) {
-		PlaySoundW(L"Intro.wav", NULL, SND_FILENAME | SND_ASYNC);
+		PlaySoundW(L"M_Intro.wav", NULL, SND_FILENAME | SND_ASYNC);
 	}
 
 	ShowConsoleCursor(false);
@@ -116,7 +116,7 @@ void CMenu::menu() {
 void CMenu::loading() {
 	ClearScreen();
 	if (ConstantVar::_isMusic) {
-		PlaySoundW(L"Loading.wav", NULL, SND_FILENAME | SND_ASYNC);
+		PlaySoundW(L"M_Loading.wav", NULL, SND_FILENAME | SND_ASYNC);
 	}
 	printTitle();
 
@@ -146,6 +146,9 @@ bool CMenu::newGame(const int& t) {
 	bool non_stop = true;
 	char m;
 	bool flag = true, flagMenu = true;
+	if (ConstantVar::_isMusic) {
+		PlaySoundW(L"M_PlayGame.wav", NULL, SND_FILENAME | SND_ASYNC);
+	}
 	while (non_stop)
 	{
 		if (flag)
@@ -379,9 +382,12 @@ void CMenu::settings() {
 					ConstantVar::_isMusic = !ConstantVar::_isMusic;
 					if (ConstantVar::_isMusic) {
 						currentChoice[0] = "ON ";
+						PlaySoundW(L"M_Select.wav", NULL, SND_FILENAME | SND_ASYNC);
+						PlaySoundW(L"M_Intro.wav", NULL, SND_FILENAME | SND_ASYNC);
 					}
 					else {
 						currentChoice[0] = "OFF";
+						PlaySoundW(L"M_Select.wav", NULL, SND_FILENAME | SND_ASYNC);
 					}
 					input = true;
 					break;
@@ -486,13 +492,16 @@ void CMenu::printGB() {
 	int color = rand() % 15 + 1;
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
 
+	if (ConstantVar::_isMusic) {
+		PlaySoundW(L"M_Goodbye.wav", NULL, SND_FILENAME | SND_ASYNC);
+	}
 	
 	CTrain train;
 
 	gotoXY(40, 10);
 	for (int i = 40; i >= 0; i--)
 	{
-		Sleep(35);
+		Sleep(50);
 		gotoXY(40 + i, 10);
 		for (int j = 0; j < train.getW(); j++)
 			cout << train.kind()[0][j];
