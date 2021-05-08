@@ -276,7 +276,7 @@ void CMap::writeToRank()
 	int level;
 	vector<pair<string, int>> board;
 	fstream ifs;
-	ifs.open("C:/Users/Envy/Downloads/NCR/rank.txt", std::fstream::in);
+	ifs.open("rank.txt", std::fstream::in);
 	if (!ifs.is_open())
 	{
 		cout << "cannot open file";
@@ -297,7 +297,7 @@ void CMap::writeToRank()
 	pair <string, int> a(ten, _level.getLevel());
 	board.push_back(a);
 	sort(board.begin(), board.end(), cmp);
-	ifs.open("C:/Users/Envy/Downloads/NCR/rank.txt", std::fstream::out);
+	ifs.open("rank.txt", std::fstream::out);
 	if (!ifs.is_open())
 	{
 		cout << "cannot open file";

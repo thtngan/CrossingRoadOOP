@@ -430,7 +430,7 @@ void CMenu::leaderBoard()
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 	int x = 80, y = 12;
 	string line;
-	ifstream f("C:/Users/Envy/Downloads/NCR/rank.txt");
+	ifstream f("rank.txt");
 	if (!f.is_open())
 	{
 		gotoXY(x, y); cout << "Unable to open file";
