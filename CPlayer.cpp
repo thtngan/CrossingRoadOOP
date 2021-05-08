@@ -87,6 +87,15 @@ int CPlayer::getW() {
 int CPlayer::getH() {
 	return 3;
 }
+
+int CPlayer::getX() {
+	return _pos.getX();
+}
+
+int CPlayer::getY() {
+	return _pos.getY();
+}
+
 void CPlayer::xuatPos()
 {
 	std::cout << _pos.getX() << " " << _pos.getY() << std::endl;
@@ -131,6 +140,23 @@ void CPlayer::moveLeft()
 	}
 }
 
+bool CPlayer::crash(CPos pos, int w, int h)
+{
+	if (this->getX() + this->getH() <= pos.getX())
+		return false;
+	if (this->getX() >= pos.getX() + h)
+		return false;
+	else
+	{
+		if (this->getY() + this->getW() <= pos.getY() * 2)
+			return false;
+		if (this->getY() >= pos.getY() * 2 + w)
+			return false;
+		else
+			return true;
+	}
+
+}
 void CPlayer::soundPlayer() {
 	if (ConstantVar::_isMusic) {
 		PlaySoundW(L"PlayerMove.wav", NULL, SND_FILENAME | SND_ASYNC);

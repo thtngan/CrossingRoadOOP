@@ -33,12 +33,14 @@ public:
 	CPos getPos();
 	int getW();
 	int getH();
+	int getX();
+	int getY();
 	void xuatPos();
 	void moveUp();
 	void moveDown();
 	void moveRight();
 	void moveLeft();
-
+	bool crash(CPos pos, int w, int h);
 	void soundPlayer();
 };
 

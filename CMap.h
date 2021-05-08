@@ -11,6 +11,9 @@
 #include "CObject.h"
 #include "CLevel.h"
 #include "CLines.h"
+#include <fstream>
+#include <vector>
+#include <algorithm>
 
 
 using namespace std;
@@ -43,4 +46,6 @@ public:
 	bool printLevelUp();
 	void loadLevel(const int&);
 	int getLevel();
+	bool collision();
+	void writeToRank();
 };

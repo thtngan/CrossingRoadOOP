@@ -202,6 +202,10 @@ bool CMenu::newGame(const int& t) {
 				}
 			}
 		}
+		if (map.collision())
+		{
+			return true;
+		}
 		if (map.isWin()) {
 			if (map.printLevelUp()) {
 				map.nextLevel();

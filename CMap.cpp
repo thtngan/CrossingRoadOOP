@@ -218,3 +218,97 @@ bool CMap::printLevelUp() {
 		}
 	}
 }
+
+bool CMap::collision()
+{
+	bool a = false;
+	vector <CObject*> List = _lines.listObj();
+	for (int i = 0; i < (int)List.size(); ++i)
+	{
+		if (_player.crash(List[i]->getPos(), List[i]->getW(), List[i]->getH()))
+		{
+			a = true;
+			system("cls");
+			gotoXY(50, 10); cout << "     _.-^^---....,,--    ";
+			gotoXY(50, 11); cout << " _--                 --_";
+			gotoXY(50, 12); cout << "<                        >)";
+			gotoXY(50, 13); cout << "|                         |";
+			gotoXY(50, 14); cout << "|._                   _./";
+			gotoXY(50, 15); cout << "  ```--. . , ; .--''' ";
+			gotoXY(50, 16); cout << "   	  | |   |   ";
+			gotoXY(50, 17); cout << "      .-=||  | |=-.   ";
+			gotoXY(50, 18); cout << "      `-=#$%&%$#=-'   ";
+			gotoXY(50, 19); cout << "   	  | ;  :|     ";
+			gotoXY(50, 20); cout << "_____.,-#%&$@%#&#~,._____";
+			gotoXY(40, 23); cout << "    _____                   _                _ ";
+			gotoXY(40, 24); cout << "   / ____|                 | |              | | ";
+			gotoXY(40, 25); cout << "  | |      _ __  __ _  ___ | |__    ___   __| | ";
+			gotoXY(40, 26); cout << "  | |     | '__|/ _` |/ __|| '_ \\ / _ | / _`  |";
+			gotoXY(40, 27); cout << "  | |____ | |  | (_| ||__ || | | || __/| (_ | |";
+			gotoXY(40, 28); cout << "   \\_____||_|   \\__,_||___/|_| |_|\\___| \\__,|_|";
+			gotoXY(48, 38); cout << "   Press-Any-Key-To-Proceed";
+			bool t = true;
+			while (t)
+			{
+				if (_kbhit())
+				{
+					break;
+				}
+			}
+			system("cls");
+			writeToRank();
+		}
+	}
+	if (a)
+	{
+		return a;
+	}
+	return false;
+}
+bool cmp(pair<string, int>& a, pair<string, int>& b)
+{
+	return a.second > b.second;
+}
+void CMap::writeToRank()
+{
+	string ten;
+	string tmp;
+	int level;
+	vector<pair<string, int>> board;
+	fstream ifs;
+	ifs.open("C:/Users/Envy/Downloads/NCR/rank.txt", std::fstream::in);
+	if (!ifs.is_open())
+	{
+		cout << "cannot open file";
+		return;
+	}
+	while (!ifs.eof())
+	{
+		getline(ifs, ten, ':');
+		getline(ifs, tmp, '\n');
+		level = stoi(tmp);
+		pair <string, int> a(ten, level);
+		board.push_back(a);
+	}
+	ifs.close();
+	cin.clear();
+	gotoXY(20, 20); cout << "Enter your name: ";
+	getline(cin, ten);
+	pair <string, int> a(ten, _level.getLevel());
+	board.push_back(a);
+	sort(board.begin(), board.end(), cmp);
+	ifs.open("C:/Users/Envy/Downloads/NCR/rank.txt", std::fstream::out);
+	if (!ifs.is_open())
+	{
+		cout << "cannot open file";
+		return;
+	}
+	for (int i = 0; i < 5; i++)
+	{
+		ifs << board[i].first << ":" << board[i].second << "\n";
+	}
+	ifs.close();
+	board.clear();
+	Sleep(500);
+	return;
+}
