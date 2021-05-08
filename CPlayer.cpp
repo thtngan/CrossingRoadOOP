@@ -153,9 +153,7 @@ bool CPlayer::crash(CPos pos, int w, int h)
 		if (this->getY() >= pos.getY() * 2 + w)
 			return false;
 		else {
-			if (ConstantVar::_isMusic) {
-				PlaySoundW(L"M_Crash.wav", NULL, SND_APPLICATION);
-			}
+
 			return true;
 
 

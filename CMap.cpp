@@ -241,6 +241,9 @@ bool CMap::collision()
 			a = true;
 			system("cls");
 
+			if (ConstantVar::_isMusic) {
+				PlaySoundW(L"M_Lose.wav", NULL, SND_APPLICATION);
+			}
 
 			gotoXY(50, 10); cout << "     _.-^^---....,,--    ";
 			gotoXY(50, 11); cout << " _--                 --_";
@@ -261,9 +264,7 @@ bool CMap::collision()
 			gotoXY(40, 28); cout << "   \\_____||_|   \\__,_||___/|_| |_|\\___| \\__,|_|";
 			gotoXY(48, 38); cout << "   Press-Any-Key-To-Proceed";
 
-			if (ConstantVar::_isMusic) {
-				PlaySoundW(L"M_Lose.wav", NULL, SND_APPLICATION);
-			}
+
 
 
 			bool t = true;
