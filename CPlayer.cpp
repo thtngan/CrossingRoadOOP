@@ -103,7 +103,7 @@ void CPlayer::xuatPos()
 void CPlayer::moveUp()
 {
 	soundPlayer();
-	_pos.setPos((_pos.getX() - 2), _pos.getY());
+	_pos.setPos((_pos.getX() - 4), _pos.getY());
 	if (_pos.getX() < 2)
 	{
 		_pos.setPos(2, _pos.getY());
@@ -113,7 +113,7 @@ void CPlayer::moveUp()
 void CPlayer::moveDown()
 {
 	soundPlayer();
-	_pos.setPos((_pos.getX() + 2), _pos.getY());
+	_pos.setPos((_pos.getX() + 4), _pos.getY());
 	if (_pos.getX() > 40)
 	{
 		_pos.setPos(40, _pos.getY());
