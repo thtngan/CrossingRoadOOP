@@ -5,7 +5,7 @@
 
 void CMenu::printTitle() {
 	int color = rand() % 15 + 1;
-	
+
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
 	
 	gotoXY(10, 3); cout << " ______  ______   ______   ______   ______  _____  ______   ______     ______   ______   ______   _____   ";
@@ -23,13 +23,14 @@ void CMenu::menu() {
 	bool input = true;
 	int x = 50, y = 10, pos = 0;
 
-	if (ConstantVar::_isMusic) {
-		PlaySoundW(L"M_Intro.wav", NULL, SND_FILENAME | SND_ASYNC);
-	}
+
 
 	ShowConsoleCursor(false);
 	int cur;
 	while (true) {
+		if (ConstantVar::_isMusic) {
+			PlaySoundW(L"M_Intro.wav", NULL, SND_FILENAME | SND_ASYNC);
+		}
 		input = true;
 		while (true) {
 			if (input) {
@@ -75,6 +76,9 @@ void CMenu::menu() {
 							break;
 						}
 					}
+					if (ConstantVar::_isMusic) {
+						PlaySoundW(L"M_Intro.wav", NULL, SND_FILENAME | SND_ASYNC);
+					}
 					break;
 				case 1: //Loadgame
 					cur = loadGame();
@@ -90,6 +94,9 @@ void CMenu::menu() {
 								input = true;
 								break;
 						}
+					if (ConstantVar::_isMusic) {
+						PlaySoundW(L"M_Intro.wav", NULL, SND_FILENAME | SND_ASYNC);
+					}
 					break;
 				case 2: //Rank
 					//Rank
@@ -105,8 +112,9 @@ void CMenu::menu() {
 					system("cls");
 					return;
 				}
-				break;
+					break;
 			}
+
 		}
 
 	}
